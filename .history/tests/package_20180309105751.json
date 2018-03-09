@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chaos-monkey": "^0.1.0",
+    "chaos-monkey": "^1.0.0",
     "express": "^4.16.2"
   }
 }

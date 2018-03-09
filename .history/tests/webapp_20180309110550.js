@@ -1,4 +1,4 @@
-const ChaosControl = require('chaos-monkey');
+const ChaosControl = require("chaos-control");
 const express = require("express");
 const app = express();
 
