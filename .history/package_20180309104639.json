@@ -1,0 +1,26 @@
+{
+  "name": "chaos-monkey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chaos-monkey.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "C:\code\nodebestpractices\services\examples\chaos-monkey\readme.md
+    C:\code\nodebestpractices\services\examples\chaos-monkey\chaos-control
+    C:\code\nodebestpractices\services\examples\chaos-monkey\confessions
+    C:\code\nodebestpractices\services\examples\chaos-monkey\gates
+    C:\code\nodebestpractices\services\examples\chaos-monkey\schedules
+    C:\code\nodebestpractices\services\examples\chaos-monkey\sins
+    C:\code\nodebestpractices\services\examples\chaos-monkey\tests
+    C:\code\nodebestpractices\services\examples\chaos-monkey\package.json"
+  },
+  "dependencies": {
+    "express-remove-route": "^1.0.0",
+    "on-finished": "^2.3.0"
+  }
+}

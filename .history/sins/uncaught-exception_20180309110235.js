@@ -7,7 +7,7 @@ class Route500ErrorSin extends SinBase {
   }
 
   start() {
-    console.log(`Prank:About to throw uncaught exception`)
+    console.log(`Prank:About to throw uncaught exceptions`)
     throw new Error(this.context.configuration.properties.message);
   }
 

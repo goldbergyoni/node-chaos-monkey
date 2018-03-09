@@ -8,8 +8,8 @@ module.exports = {
         urls: ["/api/products"]
       },
       schedule: {
-        type: "immediate-schedule",
-        delay: 0
+        type: "one-time-schedule",
+        delay: 15000
       }
     },
     {
@@ -19,8 +19,8 @@ module.exports = {
         exitCode: 1
       },
       schedule: {
-        type: "one-time-schedule",
-        delay: 11000
+        type: "immediate-schedule",
+        delay: 0
       }
     },
     {

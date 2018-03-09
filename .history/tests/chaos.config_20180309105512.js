@@ -20,7 +20,7 @@ module.exports = {
       },
       schedule: {
         type: "one-time-schedule",
-        delay: 11000
+        delay: 0
       }
     },
     {

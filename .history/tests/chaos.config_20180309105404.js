@@ -13,17 +13,6 @@ module.exports = {
       }
     },
     {
-      name: "process-exit",
-      file: "process-exit",
-      properties: {
-        exitCode: 1
-      },
-      schedule: {
-        type: "one-time-schedule",
-        delay: 11000
-      }
-    },
-    {
       name: "uncaught-exception",
       file: "uncaught-exception",
       properties: {

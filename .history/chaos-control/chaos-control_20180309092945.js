@@ -29,7 +29,7 @@ class ChaosControl {
 
   getAllSins(sinParams) {
     const allSins = [];
-    this.configuration.pranks.forEach(sinConfiguration => {
+    this.configuration.sins.forEach(sinConfiguration => {
       const SinClass = require(`../sins/${sinConfiguration.file}`);
       const sinSchedule = this.getSinSchedule(sinConfiguration)
       allSins.push(

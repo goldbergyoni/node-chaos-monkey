@@ -1,6 +1,6 @@
 {
   "name": "chaos-monkey",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "chaos-monkey.js",
   "scripts": {
@@ -8,10 +8,6 @@
   },
   "author": "",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/i0natan/node-chaos-monkey"
-  },
   "dependencies": {
     "express-remove-route": "^1.0.0",
     "on-finished": "^2.3.0"

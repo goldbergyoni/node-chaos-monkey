@@ -14,13 +14,13 @@ module.exports = {
     },
     {
       name: "process-exit",
-      file: "process-exit",
+      file: "500-error-on-route",
       properties: {
-        exitCode: 1
+        urls: ["/api/products"]
       },
       schedule: {
-        type: "one-time-schedule",
-        delay: 11000
+        type: "immediate-schedule",
+        delay: 0
       }
     },
     {

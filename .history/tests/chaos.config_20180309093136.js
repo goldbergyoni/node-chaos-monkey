@@ -1,6 +1,6 @@
 module.exports = {
   sideMonkeyPort: 3000,
-  pranks: [
+  sins: [
     {
       name: "500-error-on-route",
       file: "500-error-on-route",
@@ -10,17 +10,6 @@ module.exports = {
       schedule: {
         type: "immediate-schedule",
         delay: 0
-      }
-    },
-    {
-      name: "process-exit",
-      file: "process-exit",
-      properties: {
-        exitCode: 1
-      },
-      schedule: {
-        type: "one-time-schedule",
-        delay: 11000
       }
     },
     {
