@@ -1,5 +1,7 @@
 const express = require('express');
 
+JSON.stringify(require('../tests/chaos.config'))
+
 class ChaosControl {
   constructor(expressApplication, configuration) {
     console.log(`Chaos monkey is set to active`);

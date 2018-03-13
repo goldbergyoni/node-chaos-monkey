@@ -5,6 +5,7 @@ class ChaosControl {
     console.log(`Chaos monkey is set to active`);
     this.configuration = configuration;
     this.app = expressApplication;
+    
   }
 
   start() {
