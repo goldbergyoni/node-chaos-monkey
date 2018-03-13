@@ -5,6 +5,14 @@ const app = express();
 const port = process.env.PORT || 8080;
 app.listen(port);
 
+var bodyParser = require("body-parser");
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(bodyParser.json());
+
 new ChaosMonkey(app, require("./chaos.config")).start();
 
 var router = express.Router();

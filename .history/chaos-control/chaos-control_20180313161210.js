@@ -1,5 +1,5 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+
 
 class ChaosControl {
   constructor(expressApplication, configuration) {
@@ -10,28 +10,26 @@ class ChaosControl {
 
   start() {
     console.log(`Opening the zoo now`);
-    if (this.configuration.startMode === "config") {
-      this.startAllConfigurationPranks([this.app]);
+    if(this.configuration.startMode === "config"){
+      this.startAllConfigurationPranks([this.app])
     }
     this.registerAPI();
   }
 
-  registerAPI() {
-    this.app.use(
-      bodyParser.urlencoded({
-        extended: true
-      })
-    );
-    this.app.use(bodyParser.json());
+
+  registerAPI(){
+    var bodyParser = require("body-parser");
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(bodyParser.json());
 
     const router = express.Router();
     router.post("/chaos/pranks", (req, res) => {
       try {
-        console.log(
-          `Chaos gate was asked to start a new prank ${JSON.stringify(
-            req.body
-          )}`
-        );
+        console.log(`Chaos gate was asked to start a new prank ${JSON.stringify(req.body)}`);
         this.startPrank(req.body, [this.app]);
         res.status(200).json({ status: "OK" });
       } catch (e) {

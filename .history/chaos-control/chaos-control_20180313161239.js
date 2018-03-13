@@ -17,7 +17,7 @@ class ChaosControl {
   }
 
   registerAPI() {
-    this.app.use(
+    app.use(
       bodyParser.urlencoded({
         extended: true
       })

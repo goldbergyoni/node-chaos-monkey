@@ -14,7 +14,6 @@ class PrankBase extends EventEmitter {
       this.start();
     });
     schedule.on("stop", () => {
-      console.log('boo2')
       this.stop();
     });
   }

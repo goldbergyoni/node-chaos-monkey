@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "chaos-monkey": "^0.2.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "express-remove-route": "^1.0.0"
   }
 }

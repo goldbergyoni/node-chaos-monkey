@@ -17,12 +17,12 @@ class ChaosControl {
   }
 
   registerAPI() {
-    this.app.use(
+    app.use(
       bodyParser.urlencoded({
         extended: true
       })
     );
-    this.app.use(bodyParser.json());
+    app.use(bodyParser.json());
 
     const router = express.Router();
     router.post("/chaos/pranks", (req, res) => {

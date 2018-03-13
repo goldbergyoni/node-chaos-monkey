@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 
 class ChaosControl {
   constructor(expressApplication, configuration) {
@@ -17,12 +16,13 @@ class ChaosControl {
   }
 
   registerAPI() {
-    this.app.use(
+    var bodyParser = require("body-parser");
+    app.use(
       bodyParser.urlencoded({
         extended: true
       })
     );
-    this.app.use(bodyParser.json());
+    app.use(bodyParser.json());
 
     const router = express.Router();
     router.post("/chaos/pranks", (req, res) => {

@@ -2,7 +2,7 @@
   "name": "chaos-monkey",
   "version": "0.5.1",
   "description": "",
-  "main": "index.js",
+  "main": "chaos-control/.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,8 +13,6 @@
     "url": "https://github.com/i0natan/node-chaos-monkey"
   },
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.3",
     "express-remove-route": "^1.0.0",
     "object-sizeof": "^1.2.0",
     "on-finished": "^2.3.0",
