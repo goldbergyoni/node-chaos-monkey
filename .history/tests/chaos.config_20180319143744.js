@@ -1,6 +1,6 @@
 module.exports = {
   sideMonkeyPort: 3000,
-  startMode: "passive", //config, passive (for API calls)
+  startMode: "config", //config, passive (for API calls)
   pranks: [{
       name: "500-error-on-route",
       file: "500-error-on-route",
@@ -22,8 +22,8 @@ module.exports = {
         exitCode: 1
       },
       schedule: {
-        type: "immediate-schedule",
-        fadeOutInMS: 10000
+        type: "one-time-schedule",
+        delay: 60000
       }
     },
     {

@@ -1,6 +1,6 @@
 module.exports = {
   sideMonkeyPort: 3000,
-  startMode: "passive", //config, passive (for API calls)
+  startMode: "config", //config, passive (for API calls)
   pranks: [{
       name: "500-error-on-route",
       file: "500-error-on-route",

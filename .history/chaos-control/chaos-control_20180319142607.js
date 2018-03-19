@@ -13,9 +13,10 @@ class ChaosControl {
     if (this.configuration.startMode === "config") {
       this.startAllConfigurationPranks([this.app]);
     }
-    if (this.app) {
-      this.registerAPI();
+    if(this.app){
+      
     }
+    this.registerAPI();
   }
 
   registerAPI() {
@@ -52,11 +53,11 @@ class ChaosControl {
 
   startPrank(prankConfig, prankParams) {
     if (prankConfig.active === false) {
-      console.info(`Prank ${prankConfig.name} is not active so not starting`);
+      console.debug(`Prank ${prankConfig.name} is not active so not starting`);
       return;
     }
 
-    console.info(
+    console.debug(
       `Chaos control is about to start the Prank ${prankConfig.name}`
     );
 
