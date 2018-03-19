@@ -1,6 +1,6 @@
 module.exports = {
   sideMonkeyPort: 3000,
-  startMode: "active", //config, passive (for API calls)
+  startMode: "config", //config, passive (for API calls)
   pranks: [
     {
       name: "500-error-on-route",
@@ -36,18 +36,6 @@ module.exports = {
       schedule: {
         type: "one-time-schedule",
         delay: 9000
-      }
-    },
-    {
-      name: "unhandled-rejection",
-      file: "unhandled-rejection",
-      active: true,
-      properties: {
-        message: "Uncaught rejection was thrown by the chaos monkey"
-      },
-      schedule: {
-        type: "one-time-schedule",
-        delay: 10000
       }
     },
     {

@@ -1,11 +1,11 @@
 module.exports = {
   sideMonkeyPort: 3000,
-  startMode: "active", //config, passive (for API calls)
+  startMode: "config", //config, passive (for API calls)
   pranks: [
     {
       name: "500-error-on-route",
       file: "500-error-on-route",
-      active: false,
+      active: true,
       properties: {
         urls: ["/api/products", "/anyurl"]
       },
@@ -39,17 +39,17 @@ module.exports = {
       }
     },
     {
-      name: "unhandled-rejection",
-      file: "unhandled-rejection",
+      name: "uncaught-rejection",
+      file: "uncaught-rejection",
       active: true,
       properties: {
         message: "Uncaught rejection was thrown by the chaos monkey"
       },
       schedule: {
         type: "one-time-schedule",
-        delay: 10000
+        delay: 61000
       }
-    },
+    },  
     {
       name: "memory-load",
       file: "memory-load",

@@ -1,6 +1,6 @@
 module.exports = {
   sideMonkeyPort: 3000,
-  startMode: "active", //config, passive (for API calls)
+  startMode: "config", //config, passive (for API calls)
   pranks: [
     {
       name: "500-error-on-route",
@@ -11,7 +11,7 @@ module.exports = {
       },
       schedule: {
         type: "immediate-schedule",
-        fadeOutInMS: 10000
+        fadeOutInMS: 180000
       }
     },
     {
@@ -22,20 +22,20 @@ module.exports = {
         exitCode: 1
       },
       schedule: {
-        type: "immediate-schedule",
-        fadeOutInMS: 10000
+        type: "one-time-schedule",
+        delay: 180000
       }
     },
     {
       name: "uncaught-exception",
       file: "uncaught-exception",
-      active: false,
+      active: true,
       properties: {
         message: "Uncaught exception was thrown by the chaos monkey"
       },
       schedule: {
         type: "one-time-schedule",
-        delay: 9000
+        delay: 60000
       }
     },
     {
@@ -47,32 +47,32 @@ module.exports = {
       },
       schedule: {
         type: "one-time-schedule",
-        delay: 10000
+        delay: 61000
       }
     },
     {
       name: "memory-load",
       file: "memory-load",
-      active: false,
+      active: true,
       properties: {
-        maxMemorySizeInMB: 10
+        maxMemorySizeInMB: 1100
       },
       schedule: {
         type: "one-time-schedule",
-        delay: 1000,
+        delay: 90000,
         fadeOutInMS: 30000
       }
     },
     {
       name: "cpu-load",
       file: "cpu-load",
-      active: false,
+      active: true,
       properties: {},
       schedule: {
         type: "peaks",
-        sleepTimeBetweenPeaksInMS: 3000,
+        sleepTimeBetweenPeaksInMS: 2000,
         pickLengthInMS: 10000,
-        forHowLong: 8000
+        forHowLong: 45000
       }
     }
   ]

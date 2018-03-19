@@ -39,18 +39,6 @@ module.exports = {
       }
     },
     {
-      name: "unhandled-rejection",
-      file: "unhandled-rejection",
-      active: true,
-      properties: {
-        message: "Uncaught rejection was thrown by the chaos monkey"
-      },
-      schedule: {
-        type: "one-time-schedule",
-        delay: 10000
-      }
-    },
-    {
       name: "memory-load",
       file: "memory-load",
       active: false,

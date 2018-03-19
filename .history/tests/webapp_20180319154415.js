@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 app.listen(port);
 
-new ChaosMonkey(app, require("./chaos.config.passive.all-pranks-slow")).start();
+new ChaosMonkey(null, require("./chaos.config.passive.all-pranks-slow ")).start();
 
 var router = express.Router();
 

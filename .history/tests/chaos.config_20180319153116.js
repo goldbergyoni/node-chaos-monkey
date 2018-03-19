@@ -39,8 +39,8 @@ module.exports = {
       }
     },
     {
-      name: "unhandled-rejection",
-      file: "unhandled-rejection",
+      name: "uncaught-rejection",
+      file: "uncaught-rejection",
       active: true,
       properties: {
         message: "Uncaught rejection was thrown by the chaos monkey"
