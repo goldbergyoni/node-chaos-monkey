@@ -1,1 +1,0 @@
-module.exports = require('./chaos-control/chaos-control');

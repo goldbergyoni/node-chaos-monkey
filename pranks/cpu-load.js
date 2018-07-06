@@ -1,24 +1,47 @@
 const PrankBase = require("./prank-base");
-const sizeOf = require('object-sizeof');
-const fs = require('fs');
-const util = require('util');
-const readFilePromise = util.promisify(fs.readFile);
-const path = require('path');
+const os = require('os');
+const cp = require("child_process");
+const { join } = require("path");
 
 class OverloadCPU extends PrankBase {
-  constructor(expressApp) {
-    super(...arguments);
-  }
 
-  async start() {
-    console.log(`Prank:About to overload CPU`)
-    const fileContent = await readFilePromise(path.join(__dirname, './big-text-file.txt'));
-    require("crypto").createCipher("aes192", fileContent);
-  }
+	constructor(expressApp) {
+		// @todo, not to do this
+		super(...arguments);
 
-  stop() {
-    //can't stop an atomic operation (crypto)
-  }
+		/**
+		 * @type {number}
+		 * @private
+		 */
+		this.stopTimeout = null;
+
+		/**
+		 * @type {Array<cp.ChildProcess>}
+		 */
+		this.forks = [];
+	}
+
+	/**
+	 * @public
+	 */
+	start(duration = 3000) {
+		this.stop();
+		for(let i=0; i < os.cpus().length; i++) {
+			this.forks.push(cp.fork(join(__dirname, "cpu-load-worker-internal")));
+		}
+
+		this.stopTimeout = setTimeout(this.stop.bind(this), duration);
+	}
+	/**
+	 * @public
+	 */
+	stop() {
+		this.forks.forEach((f) => {
+			f.kill("SIGKILL");
+		});
+		this.forks = [];
+	}
+
 }
 
 module.exports = OverloadCPU;
