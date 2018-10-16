@@ -99,13 +99,13 @@ Perform POST call to ~server/chaos/pranks providing any prank configuration obje
 {"name":"uncaught-exception","file":"uncaught-exception","active":true,"properties":{"message":"Uncaught exception was thrown by the chaos monkey"},"schedule":{"type":"one-time-schedule","delay":2000}}
 ```
 
-**API usage**
+*API usage*
 
-***Start the API***
+**Start the API**
 Just run 'npm start' or 'npm run start:dev' (to get live reload with nodemon)
 
-***Routes***
-1. Get list of available pranks
+**Routes**
+***1. Get list of available pranks***
 
 Method: GET
 
@@ -133,7 +133,7 @@ Return:
 ]
 `
 
-2. Activate a prank
+***2. Activate a prank***
 
 Method: POST
 
@@ -160,7 +160,7 @@ Return:
 `
 `
 
-3. Web socket: subscribe to prank
+***3. Web socket: subscribe to prank***
 
 Method: WS
 
