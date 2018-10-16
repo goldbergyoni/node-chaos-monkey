@@ -106,9 +106,13 @@ Just run 'npm start' or 'npm run start:dev' (to get live reload with nodemon)
 
 ***Routes***
 1. Get list of available pranks
+
 Method: GET
+
 Address: http://localhost:8081/chaos/pranks-pool
+
 Sent body: Empty
+
 Return:
 `[
     {
@@ -130,8 +134,11 @@ Return:
 `
 
 2. Activate a prank
+
 Method: POST
+
 Address: http://localhost:8081/chaos/pranks-activity
+
 Sent body: 
 `
 {
@@ -146,6 +153,7 @@ Sent body:
         "fadeOutInMS": 10000
       }
 }
+
     
 `
 Return:
@@ -153,8 +161,21 @@ Return:
 `
 
 3. Web socket: subscribe to prank
+
 Method: WS
+
 Address: http://localhost:8081
+
+Event schema:
+
+`
+{name: '500-error-on-route', friendlyName: 'API returned a 500 status error', 
+  description: 'Our monkey intercepts HTTP routes and return errors on your behalf', lastHappened: new Date(),
+  expectations: 'Your monitoring system should notify, error should appear in log',
+  reality: 'The process has crashed',
+  success: 'Yes' }
+`
+
 Example:
 `
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
