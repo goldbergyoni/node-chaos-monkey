@@ -15,7 +15,7 @@ const AppRouter = () => (
     <React.Fragment>
       <Header />
       <Switch>
-        <Route path="/prankslog" component={PranksLog} />
+        <Route path="/" exact component={PranksLog} />
         <Route path="/createprank" component={CreatePrank} />
       </Switch>
     </React.Fragment>

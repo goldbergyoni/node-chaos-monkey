@@ -1,10 +1,15 @@
 /** @format */
 
 import React, {Component} from 'react';
+import Button from 'react-bootstrap/lib/Button';
 
 class CreatePrank extends Component {
   render() {
-    return <div>Create Prank Page</div>;
+    return (
+      <div>
+        <Button>Create Prank</Button>
+      </div>
+    );
   }
 }
 
