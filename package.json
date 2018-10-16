@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "start:dev": "nodemon ./index.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,12 +15,17 @@
     "url": "https://github.com/i0natan/node-chaos-monkey"
   },
   "dependencies": {
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "express-remove-route": "^1.0.0",
     "object-sizeof": "^1.2.0",
     "on-finished": "^2.3.0",
+    "socket-io": "^1.0.0",
+    "socket.io": "^2.1.1",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
   },
   "peerDependencies": {
     "express": "4.x"
