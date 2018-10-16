@@ -98,3 +98,73 @@ Perform POST call to ~server/chaos/pranks providing any prank configuration obje
 ```
 {"name":"uncaught-exception","file":"uncaught-exception","active":true,"properties":{"message":"Uncaught exception was thrown by the chaos monkey"},"schedule":{"type":"one-time-schedule","delay":2000}}
 ```
+
+**API usage**
+
+***Start the API***
+Just run 'npm start' or 'npm run start:dev' (to get live reload with nodemon)
+
+***Routes***
+1. Get list of available pranks
+Method: GET
+Address: http://localhost:8081/chaos/pranks-pool
+Sent body: Empty
+Return:
+`[
+    {
+        "name": "500-error-on-route",
+        "file": "500-error-on-route",
+        "active": false,
+        "properties": {
+            "urls": [
+                "/api/products",
+                "/anyurl"
+            ]
+        },
+        "schedule": {
+            "type": "immediate-schedule",
+            "fadeOutInMS": 10000
+        }
+    }
+]
+`
+
+2. Activate a prank
+Method: POST
+Address: http://localhost:8081/chaos/pranks-activity
+Sent body: 
+`
+{
+      "name": "500-error-on-route",
+      "file": "500-error-on-route",
+      "active": false,
+      "properties": {
+        "urls": ["/api/products", "/anyurl"]
+      },
+      "schedule": {
+        "type": "immediate-schedule",
+        "fadeOutInMS": 10000
+      }
+}
+    
+`
+Return:
+`
+`
+
+3. Web socket: subscribe to prank
+Method: WS
+Address: http://localhost:8081
+Example:
+`
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <Script>
+        var socket = io('http://localhost:8081');
+        var isOkToEmit = true;
+
+        console.log('after')
+        socket.on('new-prank-activity', function (data) {
+            console.log(`A new prank just ran ${data}`);
+        });
+    </Script>
+    `
