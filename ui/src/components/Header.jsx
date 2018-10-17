@@ -1,21 +1,19 @@
 /** @format */
 
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+
+// Styles
 import Breadcrumb from 'react-bootstrap/lib/Breadcrumb';
+import Col from 'react-bootstrap/lib/Col';
 
 const Header = () => {
   return (
-    <div>
+    <Col>
       <Breadcrumb>
-        <Breadcrumb.Item href='/'>
-          Chaos control
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <NavLink to="/createprank">Create prank</NavLink>
-        </Breadcrumb.Item>
+        <Breadcrumb.Item>Chaos control</Breadcrumb.Item>
+        <Breadcrumb.Item>Create prank</Breadcrumb.Item>
       </Breadcrumb>
-    </div>
+    </Col>
   );
 };
 
