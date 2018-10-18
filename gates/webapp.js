@@ -5,6 +5,10 @@ const io = require('socket.io');
 const ChaosControl = require("../chaos-control");
 const bodyParser = require('body-parser')
 const util = require('util');
+var cors = require('cors');
+
+
+
 
 const router = express.Router();
 expressApp.use(
@@ -12,8 +16,12 @@ expressApp.use(
     extended: true
   })
 );
+expressApp.use(cors());
+expressApp.options(cors());
+expressApp.use(express.static('ui'));
 
 expressApp.use(bodyParser.json());
+
 http.listen(8081, function () {
   console.log('listening on *:8081')
 });
