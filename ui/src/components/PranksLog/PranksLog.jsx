@@ -1,6 +1,7 @@
 /** @format */
 
 import React, {Component} from 'react';
+import axios from 'axios';
 
 import PrankScore from './PrankScore';
 
@@ -37,6 +38,20 @@ const items = [
   },
 ];
 class PranksLog extends Component {
+  state = {
+    items: [],
+  };
+
+  async componentDidMount() {
+    try {
+      const res = await axios.get('http://localhost:8081/chaos/pranks-pool');
+      // this.setState({items: res})
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   render() {
     return (
       <Col md="10">
@@ -46,7 +61,7 @@ class PranksLog extends Component {
               <h3>Pranks log</h3>
             </Row>
             {items.map((item, idx) => (
-              <Card className="my-4 p-3">
+              <Card className="my-4 p-3" key={idx}>
                 <Row>
                   <Col md="2" className="text-center">
                     <Badge pill variant={item.status}>
