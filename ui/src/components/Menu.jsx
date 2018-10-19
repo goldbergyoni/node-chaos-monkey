@@ -6,6 +6,7 @@ import {NavLink} from 'react-router-dom';
 // Styles
 import Nav from 'react-bootstrap/lib/Nav';
 import Col from 'react-bootstrap/lib/Col';
+import monkeyLogo from '../assets/chaos-monkey.png';
 
 const Menu = () => {
   return (

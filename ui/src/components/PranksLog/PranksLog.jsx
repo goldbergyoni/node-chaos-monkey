@@ -28,7 +28,7 @@ class PranksLog extends Component {
     });
     setTimeout(() => {
       socket.disconnect();
-    }, 2000);
+    }, 4000);
   }
 
   render() {
