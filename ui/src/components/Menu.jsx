@@ -6,11 +6,10 @@ import {NavLink} from 'react-router-dom';
 // Styles
 import Nav from 'react-bootstrap/lib/Nav';
 import Col from 'react-bootstrap/lib/Col';
-import monkeyLogo from '../assets/chaos-monkey.png';
 
 const Menu = () => {
   return (
-    <Col md="2">
+    <Col lg='2' md="3" className='mb-5'>
       <Nav variant="pills" className="flex-column">
         <Nav.Item>
           <Nav.Link as={NavLink} exact to="/">

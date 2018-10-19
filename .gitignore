@@ -60,3 +60,4 @@ typings/
 
 # misc
 .DS_Store
+_mobX.jsx

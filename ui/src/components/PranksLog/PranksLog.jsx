@@ -34,9 +34,9 @@ class PranksLog extends Component {
   render() {
     const {items} = this.state;
     return (
-      <Col md="10">
+      <Col lg='10' md="9">
         <Row>
-          <Col md="9">
+          <Col md="8">
             <Row className="px-3">
               <h3>Pranks log</h3>
             </Row>

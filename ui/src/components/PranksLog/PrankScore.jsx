@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/lib/Button';
 
 const PrankScore = ({score}) => {
   return (
-    <Col md="3">
+    <Col lg={{span:3,offset:1}} md="4">
       <Card bg="light">
         <Card.Header>Prank Score</Card.Header>
         <Card.Body className="text-center">
