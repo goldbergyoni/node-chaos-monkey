@@ -9,7 +9,7 @@ const RouteContainer = ({component: Component, ...rest}) => (
   <Route
     {...rest}
     render={props => (
-      <Dashboard {...props}>
+      <Dashboard {...props} {...rest}>
         <Component {...props} />
       </Dashboard>
     )}

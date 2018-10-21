@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "chaos_monkey",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -16,10 +16,10 @@
     "socket.io-client": "^2.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,5 +29,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "customize-cra": "^0.1.1",
+    "react-app-rewired": "^1.6.2"
+  }
 }

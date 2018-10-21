@@ -10,11 +10,15 @@ import RouteContainer from './RouteContainer';
 
 export const history = createHistory();
 
-const AppRouter = () => (
+const AppRouter = props => (
   <Router history={history}>
     <Switch>
-      <RouteContainer path="/" exact component={PranksLog} />
-      <RouteContainer path="/createprank" component={CreatePrank} />
+      <RouteContainer path="/" exact component={PranksLog} name="View prank" />
+      <RouteContainer
+        path="/createprank"
+        component={CreatePrank}
+        name="New prank"
+      />
     </Switch>
   </Router>
 );

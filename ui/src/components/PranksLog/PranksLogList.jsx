@@ -2,6 +2,7 @@
 
 import React, {Fragment} from 'react';
 import moment from 'moment';
+import {observer} from 'mobx-react';
 
 // Styles
 import Badge from 'react-bootstrap/lib/Badge';
@@ -9,7 +10,7 @@ import Card from 'react-bootstrap/lib/Card';
 import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 
-const PranksLogList = ({items}) => {
+const PranksLogList = observer(({items}) => {
   return (
     <Fragment>
       {items &&
@@ -48,6 +49,6 @@ const PranksLogList = ({items}) => {
       )}
     </Fragment>
   );
-};
+});
 
 export default PranksLogList;

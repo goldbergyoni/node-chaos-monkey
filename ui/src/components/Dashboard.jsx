@@ -9,11 +9,11 @@ import Menu from './Menu';
 import Container from 'react-bootstrap/lib/Container';
 import Row from 'react-bootstrap/lib/Row';
 
-const Dashboard = ({children, ...rest}) => {
+const Dashboard = ({children, name}) => {
   return (
     <Container fluid>
       <Row>
-        <Header {...rest} />
+        <Header name={name} />
       </Row>
       <Row>
         <Menu />

@@ -20,9 +20,9 @@ expressApp.use(
 expressApp.use(cors());
 expressApp.options(cors());
 expressApp.use(express.static(publicPath));
-expressApp.get('*',(req,res) => {
-  res.sendFile(path.join(publicPath, 'index.html'))
-});
+// expressApp.get('*',(req,res) => {
+//   res.sendFile(path.join(publicPath, 'index.html'))
+// });
 
 expressApp.use(bodyParser.json());
 

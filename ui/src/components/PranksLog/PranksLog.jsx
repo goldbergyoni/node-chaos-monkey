@@ -1,7 +1,7 @@
 /** @format */
 
 import React, {Component} from 'react';
-import io from 'socket.io-client';
+import {inject, observer} from 'mobx-react';
 
 import PranksLogList from './PranksLogList';
 import PrankScore from './PrankScore';
@@ -9,37 +9,20 @@ import PrankScore from './PrankScore';
 // Styles
 import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
-import Button from 'react-bootstrap/lib/Button';
 
-const socket = io('http://localhost:8081');
-
+@inject('store')
+@observer
 class PranksLog extends Component {
-  state = {
-    items: [],
-  };
-
   componentDidMount() {
-    socket.connect();
-    console.log('Socket Connected', 'Will auto DC in 30sec');
-    socket.on('new-prank-activity', data => {
-      if (data) {
-        this.setState({items: [...this.state.items, data]});
-      } else {
-        console.log(`A new prank just ran ${JSON.stringify(data)}`);
-      }
-    });
-    setTimeout(() => {
-      socket.disconnect();
-      console.log('Socket AUTO Disconnected');
-    }, 30000);
+    this.props.store.getPranksLog();
   }
-  dc = () => {
-    socket.disconnect();
-    console.log('Socket Disconnected !');
-  };
+
+  componentWillUnmount() {
+    this.props.store.disconnect();
+  }
 
   render() {
-    const {items} = this.state;
+    const {pranksLog, crazyScore} = this.props.store;
     return (
       <Col lg="10" md="9">
         <Row>
@@ -47,17 +30,9 @@ class PranksLog extends Component {
             <Row className="px-3">
               <h3>Pranks log</h3>
             </Row>
-            <PranksLogList items={items} />
+            <PranksLogList items={pranksLog} />
           </Col>
-          <PrankScore score={items.length} />
-        </Row>
-        <Row>
-          <Col sm="6">
-            <h5>after loading too much items press the RED button</h5>
-            <Button variant="danger" onClick={this.dc}>
-              Disconnect Socket
-            </Button>
-          </Col>
+          <PrankScore score={crazyScore} />
         </Row>
       </Col>
     );
