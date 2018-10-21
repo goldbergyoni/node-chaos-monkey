@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  text-decoration: none;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+  font-weight: normal;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+}
+
+h1,
+h2,
+h3,
+p,
+span,
+div {
+    font-weight: normal;
+  }
+
+a,
+a:visited,
+a:hover,
+a:active,
+a:link,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    outline: 0;
+    text-transform: none;
+  }
+
+a,
+a:before,
+a:after {
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+  }
+
+button,
+button:visted,
+button:active,
+button:hover,
+button:link,
+button:focus {
+    color: inherit;
+    text-decoration: none;
+    outline: 0;
+    text-transform: none;
+  }
+
+ul,ol,li {
+  list-style: none;
+}

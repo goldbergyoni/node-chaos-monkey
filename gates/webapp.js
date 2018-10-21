@@ -6,7 +6,8 @@ const ChaosControl = require("../chaos-control");
 const bodyParser = require('body-parser')
 const util = require('util');
 var cors = require('cors');
-
+const path = require('path');
+const publicPath = path.join('ui','build');
 
 
 
@@ -18,7 +19,10 @@ expressApp.use(
 );
 expressApp.use(cors());
 expressApp.options(cors());
-expressApp.use(express.static('ui'));
+expressApp.use(express.static(publicPath));
+// expressApp.get('*',(req,res) => {
+//   res.sendFile(path.join(publicPath, 'index.html'))
+// });
 
 expressApp.use(bodyParser.json());
 

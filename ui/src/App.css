@@ -1,0 +1,8 @@
+.app_logo {
+    height: 30px;
+    margin:0 8px;
+}
+
+.button_fixed {
+    position: fixed;
+}

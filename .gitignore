@@ -58,3 +58,6 @@ typings/
 # dotenv environment variables file
 .env
 
+# misc
+.DS_Store
+_mobX.jsx
