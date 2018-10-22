@@ -16,6 +16,8 @@ import Button from 'react-bootstrap/lib/Button';
 class CreatePrank extends Component {
   state = {
     selectedPrank: '',
+    activePrank: '',
+    activePrankTEST: '',
     pranks: [
       {name: 'Random with surprises'},
       {name: 'Exhausted hardware'},
@@ -31,9 +33,18 @@ class CreatePrank extends Component {
     this.props.store.addPrank(prank);
   };
 
+  selectPrank = (prank, idx) => {
+    this.setState({selectedPrank: prank, activePrank: idx});
+    console.log('Selected Prank', this.state.selectedPrank.name, idx);
+  };
+
+  selectPrankTEST = (prank, idx) => {
+    this.setState({activePrankTEST: idx});
+  };
+
   render() {
     const {singlePranks} = this.props.store;
-    console.log('Selected Prank', this.state.selectedPrank.name);
+
     return (
       <Col lg="10" md="9">
         <Row className="px-3">
@@ -42,7 +53,8 @@ class CreatePrank extends Component {
         <CreatePlankList
           items={this.state.pranks}
           listName="Pranks Plan"
-          howLong
+          onClick={(prank, idx) => this.selectPrankTEST(prank, idx)}
+          activePrank={this.state.activePrankTEST}
         />
         <DurationDropdown />
         <Row className="my-5">
@@ -56,7 +68,8 @@ class CreatePrank extends Component {
         <CreatePlankList
           items={singlePranks}
           listName="Single Prank"
-          onClick={prank => this.setState({selectedPrank: prank})}
+          onClick={(prank, idx) => this.selectPrank(prank, idx)}
+          activePrank={this.state.activePrank}
         />
         <Row className="mt-4 mb-3">
           <Col md={{span: 3, offset: 3}}>

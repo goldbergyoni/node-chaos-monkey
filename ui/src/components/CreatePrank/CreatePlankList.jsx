@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 
-const CreatePlankList = observer(({items, listName, onClick}) => {
+const CreatePlankList = observer(({items, listName, onClick, activePrank}) => {
   return (
     <Row className="my-3">
       <Col md="3" sm="12">
@@ -20,7 +20,9 @@ const CreatePlankList = observer(({items, listName, onClick}) => {
             <ListGroup.Item
               className="py-2 px-3"
               key={idx}
-              onClick={() => onClick(item)}
+              action
+              onClick={() => onClick(item, idx)}
+              active={activePrank === idx}
             >
               {item.name}
             </ListGroup.Item>

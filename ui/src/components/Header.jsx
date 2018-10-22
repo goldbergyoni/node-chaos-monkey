@@ -13,8 +13,9 @@ const Header = props => {
     <Col>
       <Breadcrumb>
         <img className="app_logo" src={monkeyLogo} alt="Chaos Monkey" />
-        <Breadcrumb.Item>Chaos control</Breadcrumb.Item>
-        <Breadcrumb.Item>{props.name}</Breadcrumb.Item>
+        <h2>
+          <strong>Node Chaos Monkey</strong>
+        </h2>
       </Breadcrumb>
     </Col>
   );
