@@ -2,7 +2,30 @@
   <img src="misc/chaos-monkey.png" alt="Chaos Monkey" />
 </h1>
 
-## Random & crazy pranks to check your app resiliency
+<div align="center">
+  <img src="https://img.shields.io/badge/⚙%20Build%20-%20Passing-blue.svg" alt="74 items"> <img src="https://img.shields.io/badge/%F0%9F%93%85%20Coverage%20-%2076%-green.svg" alt="Last update: October 7th, 2018"> <img src="https://img.shields.io/badge/%E2%9C%94%20Pranks%20%20-%209%20Items-brightgreen.svg" alt="Updated for Node 8.11.3 LTS">
+</div>
+
+<br/>
+
+# Extremly naughty chaos monkey for Node.js
+
+
+### Random & crazy pranks (damage functions) to check your app resiliency. Including command line and UI
+
+#1 min start
+
+A. `npm install node-chaos-monkey`
+
+B. `node -r node-chaos-monkey {your start file.js}
+
+C. This will trigger a random chaos, multiple pranks will get executed (e.g. memory overload, uncaught exceptions). Follow the log to see whatg happened and whether your app stayed resillience
+
+#5 min start
+
+
+
+#API and entire documentation
 
 **Installation**
 
