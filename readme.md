@@ -11,7 +11,7 @@
 # Extremly naughty chaos monkey to check your Node app resilliency
 
 
-# 1 min start
+# 1 min start (limited functionality)
 ### Great for quick experiments, some pranks (damage) won't be available
 
 A. **Install:** `npm install node-chaos-monkey`
@@ -24,7 +24,7 @@ C. **Trigger chaos using API or UI**:
 
 This will trigger a random chaos, multiple pranks will get executed (e.g. memory overload, uncaught exceptions). Follow the log or the UI to see whatg happened and whether your app stayed resillience
 
-#5 Preferred: 5 min start
+# 5 min start (full functionality)
 A. **Install:** `npm install node-chaos-monkey`
 
 B. **Add a reference in your code:** 
@@ -40,6 +40,8 @@ new ChaosMonkey(your-express-app).start();
 C. **Trigger chaos using API or UI**: 
 - Browse to `http/s://{host}/chaos` and trigger some chaos
 - Invoke the API `POST: http/s://{host}/chaos/random`
+
+
 
 
 # API and full documentation
