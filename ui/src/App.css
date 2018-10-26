@@ -1,8 +1,10 @@
+/** @format */
+
 .app_logo {
-    height: 55px;
-    margin:-5px 10px;
+  height: 55px;
+  margin: -5px 10px;
 }
 
 .button_fixed {
-    position: fixed;
+  position: fixed;
 }

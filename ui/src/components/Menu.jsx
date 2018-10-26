@@ -9,16 +9,16 @@ import Col from 'react-bootstrap/lib/Col';
 
 const Menu = () => {
   return (
-    <Col lg='2' md="3" className='mb-5'>
+    <Col lg="2" md="3" className="mb-5">
       <Nav variant="pills" className="flex-column">
         <Nav.Item>
-          <Nav.Link as={NavLink} exact to="/">
-            Home
+          <Nav.Link as={NavLink} exact to="/define_api">
+            Define Api
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link as={NavLink} to="/createprank">
-            Create prank
+          <Nav.Link as={NavLink} to="/chaos_test">
+            Chaos Test
           </Nav.Link>
         </Nav.Item>
       </Nav>

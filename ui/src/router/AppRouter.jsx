@@ -1,7 +1,7 @@
 /** @format */
 
 import React from 'react';
-import {Router, Switch} from 'react-router-dom';
+import {Router, Switch, Route, Redirect} from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 import PranksLog from '../components/PranksLog/PranksLog';
@@ -13,11 +13,16 @@ export const history = createHistory();
 const AppRouter = props => (
   <Router history={history}>
     <Switch>
-      <RouteContainer path="/" exact component={PranksLog} name="View prank" />
+      <Route path="/" exact render={() => <Redirect to="/define_api" />} />
       <RouteContainer
-        path="/createprank"
+        path="/define_api"
+        component={PranksLog}
+        name="Define Api"
+      />
+      <RouteContainer
+        path="/chaos_test"
         component={CreatePrank}
-        name="New prank"
+        name="Chaos Test"
       />
     </Switch>
   </Router>

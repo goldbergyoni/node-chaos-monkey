@@ -1,6 +1,6 @@
 /** @format */
 
-import React, {Fragment} from 'react';
+import React from 'react';
 import moment from 'moment';
 import {observer} from 'mobx-react';
 
@@ -14,57 +14,62 @@ import Button from 'react-bootstrap/lib/Button';
 
 const PranksLogList = observer(({items}) => {
   return (
-    <Fragment>
-      {items &&
-        items.map((item, idx) => (
-          <Card className="my-4 py-3 px-2" key={idx}>
-            <Row>
-              <Col md="2" className="text-center">
-                <Badge pill variant="success">
-                  Success
-                </Badge>
-              </Col>
-              <Col md="10">
-                <li>
-                  <strong>{item.name}</strong>
-                </li>
-                <li>
-                  <small>{moment(item.lastHappened).fromNow()}</small>
-                </li>
-                <li>
-                  <strong>Prank : </strong> {item.friendlyName}
-                </li>
-                <li>
-                  <strong>Expectation : </strong> {item.expectations}
-                </li>
-                <li>
-                  <strong>Reality : </strong> {item.reality}
-                </li>
-                {
-                  (item.success = 'Yes' ? (
-                    <Form.Check type="checkbox" label="success" />
-                  ) : (
-                    <React.Fragment>
-                      <Form.Check
-                        type="checkbox"
-                        label="We're wrong ? mark here"
-                      />
-                      <Button variant="outline-danger">
-                        Instructions: What Should I Do
-                      </Button>
-                    </React.Fragment>
-                  ))
-                }
-              </Col>
-            </Row>
+    <Row>
+      <Col md="8">
+        <Row className="px-3">
+          <h4>Pranks log</h4>
+        </Row>
+        {items &&
+          items.map((item, idx) => (
+            <Card className="my-4 py-3 px-2" key={idx}>
+              <Row>
+                <Col md="2" className="text-center">
+                  <Badge pill variant="success">
+                    Success
+                  </Badge>
+                </Col>
+                <Col md="10">
+                  <li>
+                    <strong>{item.name}</strong>
+                  </li>
+                  <li>
+                    <small>{moment(item.lastHappened).fromNow()}</small>
+                  </li>
+                  <li>
+                    <strong>Prank : </strong> {item.friendlyName}
+                  </li>
+                  <li>
+                    <strong>Expectation : </strong> {item.expectations}
+                  </li>
+                  <li>
+                    <strong>Reality : </strong> {item.reality}
+                  </li>
+                  {
+                    (item.success = 'Yes' ? (
+                      <Form.Check type="checkbox" label="success" />
+                    ) : (
+                      <React.Fragment>
+                        <Form.Check
+                          type="checkbox"
+                          label="We're wrong ? mark here"
+                        />
+                        <Button variant="outline-danger">
+                          Instructions: What Should I Do
+                        </Button>
+                      </React.Fragment>
+                    ))
+                  }
+                </Col>
+              </Row>
+            </Card>
+          ))}
+        {!items && (
+          <Card>
+            <Card.Body>No Pranks</Card.Body>
           </Card>
-        ))}
-      {!items && (
-        <Card>
-          <Card.Body>No Pranks</Card.Body>
-        </Card>
-      )}
-    </Fragment>
+        )}
+      </Col>
+    </Row>
   );
 });
 

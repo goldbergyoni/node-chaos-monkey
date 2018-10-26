@@ -14,7 +14,7 @@ const CreatePlankList = observer(({items, listName, onClick, activePrank}) => {
       <Col md="3" sm="12">
         <h6>{listName}</h6>
       </Col>
-      <Col md="6" sm="12">
+      <Col md="8" sm="12">
         <ListGroup>
           {items.map((item, idx) => (
             <ListGroup.Item
