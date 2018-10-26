@@ -11,6 +11,12 @@ class PrankStore {
   singlePranks = [];
   @observable
   pranksLog = [];
+  @observable
+  prankRunning = false;
+  @observable
+  URL = '';
+  @observable
+  apiCalls = 0;
 
   @computed
   get crazyScore() {
@@ -22,12 +28,12 @@ class PrankStore {
       );
     return score;
   }
+
   @action.bound
   async getSinglePranksList() {
     try {
       const res = await axios.get('http://localhost:8081/chaos/pranks-pool');
       this.singlePranks = res.data;
-      console.log(res.data);
     } catch (e) {
       console.log('Error getting pranks list', e);
     }
@@ -39,10 +45,9 @@ class PrankStore {
     console.log('Socket Connected');
     socket.on('new-prank-activity', data => {
       if (data) {
-        console.log(data);
         this.pranksLog.push(data);
       } else {
-        console.log(`A new prank just ran ${JSON.stringify(data)}`);
+        console.log(`a NULL prank just ran ${JSON.stringify(data)}`);
       }
     });
   }
@@ -50,8 +55,14 @@ class PrankStore {
   @action.bound
   disconnect() {
     socket.disconnect();
+    this.prankRunning = false;
     console.log('Socket Disconnected');
+    alert('METRICS will be RESET in 4 Seconds');
+    setTimeout(() => {
+      this.apiCalls = 0;
+    }, 4000);
   }
+
   @action.bound
   async addPrank(prank) {
     try {
@@ -60,6 +71,26 @@ class PrankStore {
     } catch (e) {
       console.log('Error Adding Prank', e);
     }
+  }
+
+  @action.bound
+  callApi() {
+    axios
+      .get(this.URL)
+      .then(() => {
+        this.prankRunning = true;
+        this.apiCalls++;
+        console.log('callingAPI', this.apiCalls);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+  @action.bound
+  setURL(newURL) {
+    this.URL = newURL;
+    console.log('NEW URL', newURL);
   }
 }
 

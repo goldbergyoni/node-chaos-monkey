@@ -15,7 +15,7 @@ import Button from 'react-bootstrap/lib/Button';
 const PranksLogList = observer(({items}) => {
   return (
     <Row>
-      <Col md="8">
+      <Col md="8" className="test_border">
         <Row className="px-3">
           <h4>Pranks log</h4>
         </Row>

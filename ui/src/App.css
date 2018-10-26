@@ -8,3 +8,13 @@
 .button_fixed {
   position: fixed;
 }
+
+.fixed_badge {
+  min-width: 100px;
+}
+
+.dropdown-menu.show {
+  height: auto;
+  max-height: 115px;
+  overflow-x: hidden;
+}
