@@ -2,110 +2,49 @@
   <img src="misc/chaos-monkey.png" alt="Chaos Monkey" />
 </h1>
 
-## Random & crazy pranks to check your app resiliency
+<div align="center">
+  <img src="https://img.shields.io/badge/⚙%20Build%20-%20Passing-blue.svg" alt="74 items"> <img src="https://img.shields.io/badge/%F0%9F%93%85%20Coverage%20-%2076-green.svg" alt="Last update: October 7th, 2018"> <img src="https://img.shields.io/badge/%E2%9C%94%20Pranks%20%20-%209%20Items-brightgreen.svg" alt="Updated for Node 8.11.3 LTS">
+</div>
 
-**Installation**
+<br/>
 
-npm install chaos-monkey
+# Extremly naughty chaos monkey to check your Node app resilliency
 
-**Import and initialize**
+
+# 1 min start (limited functionality)
+### Great for quick experiments, some pranks (damage) won't be available
+
+A. **Install:** `npm install node-chaos-monkey`
+
+B. **Add a flag to start command:** `node -r node-chaos-monkey {your start file.js}`
+
+C. **Trigger chaos using API or UI**: 
+- Browse to `http/s://{host}/chaos` and trigger some chaos
+- Invoke the API `POST: http/s://{host}/chaos/random`
+
+This will trigger a random chaos, multiple pranks will get executed (e.g. memory overload, uncaught exceptions). Follow the log or the UI to see whatg happened and whether your app stayed resillience
+
+# 5 min start (full functionality)
+A. **Install:** `npm install node-chaos-monkey`
+
+B. **Add a reference in your code:** 
 
 Require this package at the very beginning of your app, before registering other routes
 
 ```javascript
 const ChaosMonkey = require('chaos-monkey');
-new ChaosMonkey(app, require('./chaos.config') ).start();
+//pass in a referrence to express app so the monkey can generate damage also within Express routes. This param is optional //but without it some pranks won't be available
+new ChaosMonkey(your-express-app).start();
 ```
 
-**Activate**
+C. **Trigger chaos using API or UI**: 
+- Browse to `http/s://{host}/chaos` and trigger some chaos
+- Invoke the API `POST: http/s://{host}/chaos/random`
 
-You may start doing pranks using two methods:
 
-1. **Configuration**
-Provide the following config file to the constructor 
-Example:
-```javascript
-module.exports = {
-  sideMonkeyPort: 3000,
-  startMode: "passive", //config, passive (for API calls)
-  pranks: [{
-      name: "500-error-on-route",
-      file: "500-error-on-route",
-      active: true,
-      properties: {
-        urls: ["/api/products", "/anyurl"]
 
-      },
-      schedule: {
-        type: "immediate-schedule",
-        fadeOutInMS: 10000
-      }
-    },
-    {
-      name: "process-exit",
-      file: "process-exit",
-      active: false,
-      properties: {
-        exitCode: 1
-      },
-      schedule: {
-        type: "one-time-schedule",
-        delay: 60000
-      }
-    },
-    {
-      name: "uncaught-exception",
-      file: "uncaught-exception",
-      active: false,
-      properties: {
-        message: "Uncaught exception was thrown by the chaos monkey"
-      },
-      schedule: {
-        type: "one-time-schedule",
-        delay: 9000
-      }
-    },
-    {
-      name: "memory-load",
-      file: "memory-load",
-      active: true,
-      properties: {
-        maxMemorySizeInMB: 10
-      },
-      schedule: {
-        type: "one-time-schedule",
-        delay: 1000,
-        fadeOutInMS: 30000
-      }
-    },
-    {
-      name: "cpu-load",
-      file: "cpu-load",
-      active: false,
-      properties: {},
-      schedule: {
-        type: "peaks",
-        sleepTimeBetweenPeaksInMS: 3000,
-        pickLengthInMS: 10000,
-        forHowLong: 8000
-      }
-    }
-  ]
-};
-```
-2. *API calls*
-Perform POST call to ~server/chaos/pranks providing any prank configuration object, for example:
-```
-{"name":"uncaught-exception","file":"uncaught-exception","active":true,"properties":{"message":"Uncaught exception was thrown by the chaos monkey"},"schedule":{"type":"one-time-schedule","delay":2000}}
-```
 
-**API usage**
-
-**Start the API**
-Just run 'npm start' or 'npm run start:dev' (to get live reload with nodemon)
-
-**Routes**
-
+# API and full documentation
 ***1. Get list of available pranks***
 
 Method: GET
