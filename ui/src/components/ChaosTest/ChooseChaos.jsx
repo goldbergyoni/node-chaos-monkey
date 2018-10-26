@@ -35,8 +35,8 @@ class ChooseChaos extends Component {
 
   createPrankandStart = () => {
     this.props.store.addPrank(this.state.selectedPrank);
-    this.props.store.getPranksLog();
     this.makeCall();
+    this.props.store.getPranksLog();
     this.setState({prankRunning: true});
   };
 
@@ -71,26 +71,30 @@ class ChooseChaos extends Component {
         <Card bg="light">
           <Card.Header>Choose Chaos</Card.Header>
           <Card.Body>
-            <DropdownComponent
-              items={pranks}
-              title="Pranks Plan"
-              onClick={prank => this.selectPrankTEST(prank)}
-              selectedPrank={this.state.selectPrank}
-            />
-            <Row className="my-5">
-              <Col md="2" xs="3">
-                OR
-              </Col>
-              <Col md="10" xs="9">
-                <hr style={{backgroundColor: 'black'}} />
-              </Col>
-            </Row>
-            <DropdownComponent
-              items={singlePranks}
-              title="Single Prank"
-              onClick={prank => this.selectPrank(prank)}
-              selectedPrank={selectedPrank}
-            />
+            {!prankRunning && (
+              <>
+                <DropdownComponent
+                  items={pranks}
+                  title="Pranks Plan"
+                  onClick={prank => this.selectPrankTEST(prank)}
+                  selectedPrank={this.state.selectPrank}
+                />
+                <Row className="my-5">
+                  <Col md="2" xs="3">
+                    OR
+                  </Col>
+                  <Col md="10" xs="9">
+                    <hr style={{backgroundColor: 'black'}} />
+                  </Col>
+                </Row>
+                <DropdownComponent
+                  items={singlePranks}
+                  title="Single Prank"
+                  onClick={prank => this.selectPrank(prank)}
+                  selectedPrank={selectedPrank}
+                />
+              </>
+            )}
             <Row className="mt-4 mb-3">
               <Col xs="3">
                 <Button
