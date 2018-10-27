@@ -18,10 +18,10 @@ class ChooseChaos extends Component {
   state = {
     selectedPrank: '',
     pranks: [
-      {name: 'Random with surprises'},
-      {name: 'Exhausted hardware'},
-      {name: 'Error handling benchmark'},
-      {name: 'Slow and comprhensive'},
+      {friendlyName: 'Random with surprises'},
+      {friendlyName: 'Exhausted hardware'},
+      {friendlyName: 'Error handling benchmark'},
+      {friendlyName: 'Slow and comprehensive'},
     ],
   };
 

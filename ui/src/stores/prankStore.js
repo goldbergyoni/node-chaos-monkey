@@ -1,6 +1,10 @@
 /** @format */
 
-import {action, observable, computed} from 'mobx';
+import {
+  action,
+  observable,
+  computed
+} from 'mobx';
 import axios from 'axios';
 import io from 'socket.io-client';
 
@@ -17,6 +21,10 @@ class PrankStore {
   URL = '';
   @observable
   apiCalls = 0;
+  @observable
+  apiErrors = 0;
+  @observable
+  apiIsAlive = "Yes";
 
   @computed
   get crazyScore() {
@@ -60,6 +68,8 @@ class PrankStore {
     alert('METRICS will be RESET in 4 Seconds');
     setTimeout(() => {
       this.apiCalls = 0;
+      this.apiErrors = 0;
+      this.apiIsAlive = "Yes";
     }, 4000);
   }
 
@@ -84,6 +94,10 @@ class PrankStore {
       })
       .catch(e => {
         console.log(e);
+        this.apiErrors++;
+        if (e.code === "ECONNREFUSED" || e.code === "ENOTFOUND" || e.message === "Network Error") {
+          this.apiIsAlive = "No";
+        }
       });
   }
 

@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/lib/Card';
 import Col from 'react-bootstrap/lib/Col';
 import Badge from 'react-bootstrap/lib/Badge';
 
-const PrankScore = ({apiCalls}) => {
+const PrankScore = ({apiCalls, apiErrors, apiIsAlive}) => {
   return (
     <Col lg={{span: 7, offset: 0}} md="true" className="mb-5">
       <Card bg="light">
@@ -26,7 +26,7 @@ const PrankScore = ({apiCalls}) => {
             Errors
             <h2>
               <Badge pill className="fixed_badge" variant="warning">
-                {Math.floor(Math.random() * 10)}
+              {apiErrors}
               </Badge>
             </h2>
           </div>
@@ -42,7 +42,7 @@ const PrankScore = ({apiCalls}) => {
             is Alive
             <h2>
               <Badge pill className="fixed_badge" variant="success">
-                Yes
+              {apiIsAlive}
               </Badge>
             </h2>
           </div>

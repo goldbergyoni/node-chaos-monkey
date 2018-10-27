@@ -28,7 +28,7 @@ const DurationDropdown = observer(({items, title, onClick, selectedPrank}) => {
               onClick={() => onClick(item)}
               active={!!selectedPrank && selectedPrank.name === item.name}
             >
-              {item.name}
+              {item.friendlyName}
             </Dropdown.Item>
           ))}
         </DropdownButton>

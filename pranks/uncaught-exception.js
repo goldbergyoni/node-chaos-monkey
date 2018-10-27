@@ -12,7 +12,7 @@ class Route500ErrorSin extends PrankBase {
   }
 
   stop() {
-    //hmm how to remove middleware?
+    //hmm no way to stop an exception that was thrown...
   }
 }
 

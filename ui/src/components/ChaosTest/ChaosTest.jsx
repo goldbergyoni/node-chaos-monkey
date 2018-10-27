@@ -19,12 +19,12 @@ class PranksLog extends Component {
   // }
 
   render() {
-    const {pranksLog, apiCalls} = this.props.store;
+    const {pranksLog, apiCalls, apiErrors, apiIsAlive} = this.props.store;
     return (
       <Col lg="10" md="9">
         <Row>
           <ChooseChaos />
-          <ChaosMetrics apiCalls={apiCalls} />
+          <ChaosMetrics apiCalls={apiCalls} apiErrors={apiErrors} apiIsAlive={apiIsAlive}/>
         </Row>
         <PranksLogList items={pranksLog} />
       </Col>

@@ -30,7 +30,7 @@ const PranksLogList = observer(({items}) => {
                 </Col>
                 <Col md="10">
                   <li>
-                    <strong>{item.name}</strong>
+                    <strong>{item.friendlyName}</strong>
                   </li>
                   <li>
                     <small>{moment(item.lastHappened).fromNow()}</small>

@@ -1,5 +1,5 @@
-const express = require("express");
 const bodyParser = require("body-parser");
+const express = require("express");
 
 class ChaosControl {
   constructor(expressApplication, configuration) {
@@ -65,18 +65,25 @@ class ChaosControl {
     //temporarily hard-coded, to be fixed in few days
     const result = [{
         name: "500-error-on-route",
+        friendlyName: "API route returns 500 error",
         file: "500-error-on-route",
-        active: false,
+        active: true,
         properties: {
           urls: ["/api/products", "/anyurl"]
         },
         schedule: {
           type: "immediate-schedule",
           fadeOutInMS: 10000
-        }
+        },
+        description: 'Our monkey intercepts HTTP routes and return errors on your behalf',
+        lastHappened: new Date(),
+        expectations: 'Your monitoring system should notify, error should appear in log',
+        reality: 'This feature is not implemented yet',
+        success: 'Yes'
       },
       {
-        name: "process-exit",
+        name: "Process-exit",
+        friendlyName: "Process exit",
         file: "process-exit",
         active: true,
         properties: {
@@ -85,22 +92,34 @@ class ChaosControl {
         schedule: {
           type: "immediate-schedule",
           fadeOutInMS: 10000
-        }
+        },
+        description: 'Our monkey kills the process',
+        lastHappened: new Date(),
+        expectations: 'Your monitoring system should notify, a new process should be instantiated',
+        reality: 'This feature is not implemented yet',
+        success: 'No'
       },
       {
         name: "uncaught-exception",
+        friendlyName: "Uncaught exception",
         file: "uncaught-exception",
-        active: false,
+        active: true,
         properties: {
           message: "Uncaught exception was thrown by the chaos monkey"
         },
         schedule: {
           type: "one-time-schedule",
-          delay: 9000
-        }
+          delay: 12000
+        },
+        description: 'Our monkey Throws an uncaught exception into the void',
+        lastHappened: new Date(),
+        expectations: 'Your monitoring system should notify, process should stay alive or new one should get instantiated',
+        reality: 'This feature is not implemented yet',
+        success: 'No'
       },
       {
         name: "unhandled-rejection",
+        friendlyName: "Unhandled promise rejection",
         file: "unhandled-rejection",
         active: true,
         properties: {
@@ -109,12 +128,18 @@ class ChaosControl {
         schedule: {
           type: "one-time-schedule",
           delay: 10000
-        }
+        },
+        description: 'Our monkey Throws an uncaught promise rejection into the void',
+        lastHappened: new Date(),
+        expectations: 'Your monitoring system should notify, process should stay alive or new one should get instantiated',
+        reality: 'This feature is not implemented yet',
+        success: 'No'
       },
       {
         name: "memory-load",
+        friendlyName: "Memory is overloaded",
         file: "memory-load",
-        active: false,
+        active: true,
         properties: {
           maxMemorySizeInMB: 10
         },
@@ -122,53 +147,100 @@ class ChaosControl {
           type: "one-time-schedule",
           delay: 1000,
           fadeOutInMS: 30000
-        }
+        },
+        description: 'Our monkey constantly increases the RAM, if no limit was specified the entire allowed 1.7GB will be used',
+        lastHappened: new Date(),
+        expectations: 'Your monitoring system should notify',
+        reality: 'This feature is not implemented yet',
+        success: 'No'
       },
       {
         name: "cpu-load",
+        friendlyName: "Busy CPU",
         file: "cpu-load",
-        active: false,
+        active: true,
         properties: {},
         schedule: {
           type: "peaks",
           sleepTimeBetweenPeaksInMS: 3000,
           pickLengthInMS: 10000,
           forHowLong: 8000
-        }
+        },
+        description: 'Our monkey constantly keeps the CPU busy (without blocking the event loop)',
+        lastHappened: new Date(),
+        expectations: 'Your monitoring system should notify',
+        reality: 'This feature is not implemented yet',
+        success: 'No'
+      },
+      {
+        name: "blocked-event-loop",
+        friendlyName: "Blocked event loop",
+        file: "blocked-event-loop",
+        active: true,
+        properties: {},
+        schedule: {
+          type: "peaks",
+          sleepTimeBetweenPeaksInMS: 3000,
+          pickLengthInMS: 10000,
+          forHowLong: 8000
+        },
+        description: 'Our monkey constantly blocks the event loop',
+        lastHappened: new Date(),
+        expectations: 'Your monitoring system should notify',
+        reality: 'This feature is not implemented yet',
+        success: 'No'
+      },
+      {
+        name: "broken-http-integration",
+        friendlyName: "Broken Integration",
+        file: "broken-http-integration",
+        active: true,
+        properties: {},
+        schedule: {
+          type: "peaks",
+          sleepTimeBetweenPeaksInMS: 3000,
+          pickLengthInMS: 10000,
+          forHowLong: 8000
+        },
+        description: 'Our monkey intercepts HTTP calls and return random HTTP erros on their behalf',
+        lastHappened: new Date(),
+        expectations: 'Your monitoring system should notify, code should find alternate routes to achieve a decent UX',
+        reality: 'This feature is not implemented yet',
+        success: 'No'
       }
-    ];
+  ];
 
-    return result;
+  return result;
+}
+
+startPrankActivity(prankConfig, prankParams) {
+  if (prankConfig.active === false) {
+    console.info(`Prank ${prankConfig.name} is not active so not starting`);
+    return;
   }
 
-  startPrankActivity(prankConfig, prankParams) {
-    if (prankConfig.active === false) {
-      console.info(`Prank ${prankConfig.name} is not active so not starting`);
-      return;
-    }
+  console.info(
+    `Chaos control is about to start the Prank ${prankConfig.name}`
+  );
 
-    console.info(
-      `Chaos control is about to start the Prank ${prankConfig.name}`
-    );
+  const PrankClass = require(`../pranks/${prankConfig.file}`);
+  console.log(PrankClass);
+  const PrankSchedule = this.getPrankSchedule(prankConfig);
+  const prankToStart = new PrankClass(
+    prankConfig,
+    PrankSchedule,
+    ...prankParams
+  );
+  PrankSchedule.start();
+}
 
-    const PrankClass = require(`../pranks/${prankConfig.file}`);
-    console.log(PrankClass);
-    const PrankSchedule = this.getPrankSchedule(prankConfig);
-    const prankToStart = new PrankClass(
-      prankConfig,
-      PrankSchedule,
-      ...prankParams
-    );
-    PrankSchedule.start();
-  }
-
-  startAllConfigurationPranks(prankParams) {
-    this.configuration.pranks
-      .filter(prank => prank.active === true)
-      .forEach(prankConfiguration => {
-        this.startPrankActivity(prankConfiguration, prankParams);
-      });
-  }
+startAllConfigurationPranks(prankParams) {
+  this.configuration.pranks
+    .filter(prank => prank.active === true)
+    .forEach(prankConfiguration => {
+      this.startPrankActivity(prankConfiguration, prankParams);
+    });
+}
 }
 
 module.exports = ChaosControl;
