@@ -18,10 +18,10 @@ const DurationDropdown = () => {
           id="dropdown-item-button"
           title="select"
         >
-          <Dropdown.Item as="button">5 sec</Dropdown.Item>
-          <Dropdown.Item as="button">10 sec</Dropdown.Item>
           <Dropdown.Item as="button">30 sec</Dropdown.Item>
           <Dropdown.Item as="button">1 min</Dropdown.Item>
+          <Dropdown.Item as="button">5 min</Dropdown.Item>
+          <Dropdown.Item as="button">20 min</Dropdown.Item>
         </DropdownButton>
       </Col>
     </Row>

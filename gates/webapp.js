@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const util = require('util');
 var cors = require('cors');
 const path = require('path');
-const publicPath = path.join('ui','build');
+const publicPath = path.join('ui', 'build');
 
 
 
@@ -20,9 +20,6 @@ expressApp.use(
 expressApp.use(cors());
 expressApp.options(cors());
 expressApp.use(express.static(publicPath));
-// expressApp.get('*',(req,res) => {
-//   res.sendFile(path.join(publicPath, 'index.html'))
-// });
 
 expressApp.use(bodyParser.json());
 
@@ -35,7 +32,7 @@ const webSocketConnection = io.listen(http);
 router.post("/chaos/pranks-activity", (req, res) => {
   try {
     console.log(`Chaos gate was asked to start a new prank activity ${util.inspect(req.body)}`);
-    new ChaosControl().startPrankActivity(req.body, expressApp);
+    new ChaosControl().startPrankActivity(req.body, [expressApp]);
     res.status(200).json({
       status: "OK"
     });
@@ -57,36 +54,21 @@ router.get("/chaos/pranks-pool", (req, res) => {
 
 expressApp.use(router);
 
-webSocketConnection.on('error' , (error) =>{
+webSocketConnection.on('error', (error) => {
   console.log(error);
 });
 webSocketConnection.on('connection', (socket) => {
   console.log('a user connected');
 
-  const prankActivity = [];
-  prankActivity.push({name: '500-error-on-route', friendlyName: 'API returned a 500 status error', 
-  description: 'Our monkey intercepts HTTP routes and return errors on your behalf', lastHappened: new Date(),
-  expectations: 'Your monitoring system should notify, error should appear in log',
-  reality: 'The process has crashed',
-  success: 'Yes' });
-  prankActivity.push({name: '500-error-on-route', friendlyName: 'API returned a 500 status error', 
-  description: 'Our monkey intercepts HTTP routes and return errors on your behalf', lastHappened: new Date(),
-  expectations: 'Your monitoring system should notify, error should appear in log',
-  reality: 'The process has crashed',
-  success: 'Yes' });
-  prankActivity.push({name: '500-error-on-route', friendlyName: 'API returned a 500 status error', 
-  description: 'Our monkey intercepts HTTP routes and return errors on your behalf', lastHappened: new Date(),
-  expectations: 'Your monitoring system should notify, error should appear in log',
-  reality: 'The process has crashed',
-  success: 'Yes' });
+  const prankActivity = new ChaosControl().getPranksPool();
 
   setInterval(() => {
     console.log('Emitting prank activity');
-    socket.broadcast.emit('new-prank-activity', prankActivity[Math.ceil(Math.random() * prankActivity.length)]);
-  } , 5000);
-  
-  
+    socket.broadcast.emit('new-prank-activity', prankActivity[Math.ceil(Math.random() * prankActivity.length - 1)]);
+  }, 7000);
+
+
   socket.on('disconnect', function () {
-      console.log('user disconnected');
+    console.log('user disconnected');
   });
 });

@@ -26,13 +26,10 @@ const PranksLogList = observer(({items}) => {
               </Col>
               <Col md="10">
                 <li>
-                  <strong>{item.name}</strong>
+                  <strong>{item.friendlyName}</strong>
                 </li>
                 <li>
                   <small>{moment(item.lastHappened).fromNow()}</small>
-                </li>
-                <li>
-                  <strong>Prank : </strong> {item.friendlyName}
                 </li>
                 <li>
                   <strong>Expectation : </strong> {item.expectations}
