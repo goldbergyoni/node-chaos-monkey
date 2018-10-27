@@ -1,8 +1,20 @@
+/** @format */
+
 .app_logo {
-    height: 55px;
-    margin:-5px 10px;
+  height: 55px;
+  margin: -5px 10px;
 }
 
 .button_fixed {
-    position: fixed;
+  position: fixed;
+}
+
+.fixed_badge {
+  min-width: 100px;
+}
+
+.dropdown-menu.show {
+  height: auto;
+  max-height: 115px;
+  overflow-x: hidden;
 }

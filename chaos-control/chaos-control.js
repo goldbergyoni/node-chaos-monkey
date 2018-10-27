@@ -1,5 +1,5 @@
-const express = require("express");
 const bodyParser = require("body-parser");
+const express = require("express");
 
 class ChaosControl {
   constructor(expressApplication, configuration) {
@@ -109,7 +109,7 @@ class ChaosControl {
         },
         schedule: {
           type: "one-time-schedule",
-          delay: 9000
+          delay: 12000
         },
         description: 'Our monkey Throws an uncaught exception into the void',
         lastHappened: new Date(),

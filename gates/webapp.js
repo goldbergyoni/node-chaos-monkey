@@ -10,7 +10,6 @@ const path = require('path');
 const publicPath = path.join('ui', 'build');
 
 
-
 const router = express.Router();
 expressApp.use(
   bodyParser.urlencoded({
@@ -51,6 +50,19 @@ router.get("/chaos/pranks-pool", (req, res) => {
     res.status(500).json(e);
   }
 });
+
+router.get("/api/product/:id", (req, res) => {
+  try {
+    console.log(`Chaos example route was called`);
+    setTimeout(() => {
+      res.status(200).json({});  
+    }, 50);
+    
+  } catch (e) {
+    res.status(500).json(e);
+  }
+});
+
 
 expressApp.use(router);
 

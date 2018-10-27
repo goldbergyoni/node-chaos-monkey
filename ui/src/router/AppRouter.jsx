@@ -1,11 +1,11 @@
 /** @format */
 
 import React from 'react';
-import {Router, Switch} from 'react-router-dom';
+import {Router, Switch, Route, Redirect} from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
-import PranksLog from '../components/PranksLog/PranksLog';
-import CreatePrank from '../components/CreatePrank/CreatePrank';
+import ChaosTest from '../components/ChaosTest/ChaosTest';
+import DefineApi from '../components/DefineApi/DefineApi';
 import RouteContainer from './RouteContainer';
 
 export const history = createHistory();
@@ -13,11 +13,16 @@ export const history = createHistory();
 const AppRouter = props => (
   <Router history={history}>
     <Switch>
-      <RouteContainer path="/" exact component={PranksLog} name="View prank" />
+      <Route path="/" exact render={() => <Redirect to="/define_api" />} />
       <RouteContainer
-        path="/createprank"
-        component={CreatePrank}
-        name="New prank"
+        path="/define_api"
+        component={DefineApi}
+        name="Define Api"
+      />
+      <RouteContainer
+        path="/chaos_test"
+        component={ChaosTest}
+        name="Chaos Test"
       />
     </Switch>
   </Router>
