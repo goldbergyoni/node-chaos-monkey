@@ -11,11 +11,11 @@ import DropdownButton from 'react-bootstrap/lib/DropdownButton';
 
 const DurationDropdown = observer(({items, title, onClick, selectedPrank}) => {
   return (
-    <Row className="my-4">
-      <Col md="5">
+    <Row>
+      <Col md="4">
         <h6>{title}</h6>
       </Col>
-      <Col md="7">
+      <Col md="8">
         <DropdownButton
           variant="light"
           id="dropdown-item-button"

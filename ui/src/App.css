@@ -15,6 +15,10 @@
 
 .dropdown-menu.show {
   height: auto;
-  max-height: 115px;
+  max-height: 240px;
   overflow-x: hidden;
+}
+
+.chaos_metrics {
+ height: 100%;
 }

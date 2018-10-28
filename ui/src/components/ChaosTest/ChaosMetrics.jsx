@@ -7,44 +7,48 @@ import Card from 'react-bootstrap/lib/Card';
 import Col from 'react-bootstrap/lib/Col';
 import Badge from 'react-bootstrap/lib/Badge';
 
-const PrankScore = ({apiCalls, apiErrors, apiIsAlive}) => {
+const PrankScore = ({apiCalls, apiErrors, apiIsAlive, latency}) => {
   return (
-    <Col lg={{span: 7, offset: 0}} md="true" className="mb-5">
-      <Card bg="light">
+    <Col xl={{span: 6, offset: 1}} lg="7" md="12" className="mb-5">
+      <Card bg="light" className="chaos_metrics">
         <Card.Header>Chaos Metrics</Card.Header>
-        <Card.Body className="text-center d-flex justify-content-around">
+        <Card.Body className="text-center d-flex flex-sm-row flex-column justify-content-around ">
           <div className="d-flex-column">
             # of Requests
-            <h2>
-              <Badge pill className="fixed_badge" variant="danger">
+            <h3>
+              <Badge pill className="fixed_badge" variant="success">
                 {apiCalls}
                 /sec
               </Badge>
-            </h2>
+            </h3>
           </div>
           <div className="d-flex-column">
             Errors
-            <h2>
-              <Badge pill className="fixed_badge" variant="warning">
-              {apiErrors}
+            <h3>
+              <Badge pill className="fixed_badge" variant="dark">
+                {apiErrors}
               </Badge>
-            </h2>
+            </h3>
           </div>
           <div className="d-flex-column">
             Avg. Latency
-            <h2>
-              <Badge pill className="fixed_badge" variant="info">
-                {Math.floor(Math.random() * 80)} ms
+            <h3>
+              <Badge pill className="fixed_badge" variant="primary">
+                {isNaN(latency) ? 0 : latency} ms
               </Badge>
-            </h2>
+            </h3>
           </div>
           <div className="d-flex-column">
             is Alive
-            <h2>
-              <Badge pill className="fixed_badge" variant="success">
-              {apiIsAlive}
+            <h3>
+              <Badge
+                pill
+                className="fixed_badge"
+                variant={apiIsAlive ? 'warning' : 'danger'}
+              >
+                {apiIsAlive ? 'Yes' : 'No'}!
               </Badge>
-            </h2>
+            </h3>
           </div>
         </Card.Body>
       </Card>

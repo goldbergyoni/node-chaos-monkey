@@ -67,7 +67,7 @@ class ChooseChaos extends Component {
     const {selectedPrank, pranks} = this.state;
 
     return (
-      <Col lg="5" md="8" className="mb-5">
+      <Col lg="5" md="12" className="mb-5">
         <Card bg="light">
           <Card.Header>Choose Chaos</Card.Header>
           <Card.Body>
@@ -79,7 +79,7 @@ class ChooseChaos extends Component {
                   onClick={prank => this.selectPrankTEST(prank)}
                   selectedPrank={this.state.selectPrank}
                 />
-                <Row className="my-5">
+                <Row>
                   <Col md="2" xs="3">
                     OR
                   </Col>
@@ -95,8 +95,8 @@ class ChooseChaos extends Component {
                 />
               </>
             )}
-            <Row className="mt-4 mb-3">
-              <Col xs="3">
+            <Row className="text-center">
+              <Col xs="6">
                 <Button
                   variant={selectedPrank ? 'primary' : 'secondary'}
                   onClick={this.createPrankandStart}
@@ -105,7 +105,7 @@ class ChooseChaos extends Component {
                   Start prank
                 </Button>
               </Col>
-              <Col xs={{span: 3, offset: 1}}>
+              <Col xs="6">
                 <Button
                   variant={prankRunning ? 'danger' : 'secondary'}
                   onClick={this.stopPrank.bind(this)}

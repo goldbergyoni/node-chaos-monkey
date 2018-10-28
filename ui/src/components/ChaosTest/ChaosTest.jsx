@@ -14,17 +14,28 @@ import Row from 'react-bootstrap/lib/Row';
 @inject('store')
 @observer
 class PranksLog extends Component {
-  // componentWillUnmount() {
-  //   this.props.store.disconnect();
-  // }
+  componentWillUnmount() {
+    this.props.store.disconnect();
+  }
 
   render() {
-    const {pranksLog, apiCalls, apiErrors, apiIsAlive} = this.props.store;
+    const {
+      pranksLog,
+      apiCalls,
+      apiErrors,
+      apiIsAlive,
+      latency,
+    } = this.props.store;
     return (
       <Col lg="10" md="9">
         <Row>
           <ChooseChaos />
-          <ChaosMetrics apiCalls={apiCalls} apiErrors={apiErrors} apiIsAlive={apiIsAlive}/>
+          <ChaosMetrics
+            apiCalls={apiCalls}
+            apiErrors={apiErrors}
+            apiIsAlive={apiIsAlive}
+            latency={latency}
+          />
         </Row>
         <PranksLogList items={pranksLog} />
       </Col>

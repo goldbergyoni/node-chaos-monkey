@@ -31,12 +31,16 @@ class DefineApi extends Component {
     console.log(event.target.value);
   };
 
+  handleFile = e => {
+    this.refs.fileUploader.click();
+  };
+
   render() {
     return (
       <Col lg="10" md="9">
         <Row>
           <Col md="8">
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-5">
               <DropdownButton
                 as={InputGroup.Prepend}
                 variant="outline-secondary"
@@ -63,7 +67,7 @@ class DefineApi extends Component {
               </InputGroup.Prepend>
               <FormControl
                 aria-describedby="basic-addon1"
-                placeholder="Write your URL above and press Set"
+                placeholder="Write your URL above and press Save"
                 disabled
                 value={this.state.setURL}
               />
@@ -72,19 +76,35 @@ class DefineApi extends Component {
         </Row>
         <Row>
           <Col md="8">
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-4">
               <FormControl
                 as="textarea"
+                rows="8"
                 aria-describedby="basic-addon1"
                 placeholder="BODY - JSON"
               />
             </InputGroup>
           </Col>
         </Row>
-        <Row>
-          <Col xs={{span: 3, offset: 4}}>
-            <Button variant="success" onClick={this.setURL}>
-              Set URL
+        <Row className="text-center">
+          <Col xs="4">
+            <input
+              type="file"
+              id="file"
+              ref="fileUploader"
+              style={{display: 'none'}}
+            />
+            <Button variant="outline-success" onClick={this.handleFile}>
+              Import Swagger
+            </Button>
+          </Col>
+          <Col xs="4">
+            <Button
+              variant="success"
+              disabled={!this.state.URL}
+              onClick={this.setURL}
+            >
+              Save
             </Button>
           </Col>
         </Row>

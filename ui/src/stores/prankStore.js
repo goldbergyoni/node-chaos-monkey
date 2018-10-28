@@ -1,10 +1,6 @@
 /** @format */
 
-import {
-  action,
-  observable,
-  computed
-} from 'mobx';
+import {action, observable, computed} from 'mobx';
 import axios from 'axios';
 import io from 'socket.io-client';
 
@@ -24,7 +20,11 @@ class PrankStore {
   @observable
   apiErrors = 0;
   @observable
-  apiIsAlive = "Yes";
+  apiIsAlive = true;
+  @observable
+  startTime = 0;
+  @observable
+  endTime = 0;
 
   @computed
   get crazyScore() {
@@ -35,6 +35,17 @@ class PrankStore {
         this.pranksLog.length * Math.floor(Math.random() * Math.floor(10))
       );
     return score;
+  }
+
+  @computed
+  get latency() {
+    let latency = 0;
+    latency = Math.round(
+      Math.abs(
+        this.endTime - 1540000000000 - (this.startTime - 1540000000000)
+      ) / this.apiCalls
+    );
+    return latency;
   }
 
   @action.bound
@@ -63,13 +74,16 @@ class PrankStore {
   @action.bound
   disconnect() {
     socket.disconnect();
+
     this.prankRunning = false;
     console.log('Socket Disconnected');
-    alert('METRICS will be RESET in 4 Seconds');
+    // alert('METRICS will be RESET in 4 Seconds');
     setTimeout(() => {
       this.apiCalls = 0;
       this.apiErrors = 0;
-      this.apiIsAlive = "Yes";
+      this.startTime = 0;
+      this.endTime = 0;
+      this.apiIsAlive = true;
     }, 4000);
   }
 
@@ -85,9 +99,12 @@ class PrankStore {
 
   @action.bound
   callApi() {
+    this.startTime = this.startTime + new Date().getTime();
+    console.log('START TIME:', this.startTime);
     axios
       .get(this.URL)
       .then(() => {
+        this.endTime = this.endTime + new Date().getTime();
         this.prankRunning = true;
         this.apiCalls++;
         console.log('callingAPI', this.apiCalls);
@@ -95,8 +112,13 @@ class PrankStore {
       .catch(e => {
         console.log(e);
         this.apiErrors++;
-        if (e.code === "ECONNREFUSED" || e.code === "ENOTFOUND" || e.message === "Network Error") {
-          this.apiIsAlive = "No";
+        this.prankRunning = true;
+        if (
+          e.code === 'ECONNREFUSED' ||
+          e.code === 'ENOTFOUND' ||
+          e.message === 'Network Error'
+        ) {
+          this.apiIsAlive = false;
         }
       });
   }
