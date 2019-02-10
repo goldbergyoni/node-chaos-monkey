@@ -46,8 +46,8 @@ class API {
 
     router.get("/pranks/definition", (req, res) => {
       try {
-        console.log(`Chaos gate was asked to get all pranks definition`);
-        const result = new PranksDefinition().getAll
+        console.log(`Chaos API was asked to get all pranks definition`);
+        const result = new PranksDefinition().getAll();
         res.status(200).json(result);
       } catch (e) {
         res.status(500).json(e);
