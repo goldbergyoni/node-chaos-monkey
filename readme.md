@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="misc/chaos-monkey.png" alt="Chaos Monkey" />
+  <img src="docs/chaos-monkey.png" alt="Chaos Monkey" />
 </h1>
 
 <div align="center">

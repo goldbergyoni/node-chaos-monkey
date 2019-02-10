@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:manual": "npm run build:ui && nodemon ./tests/manual-testing-with-simple-web-app/index.js",
     "start": "node ./index.js",
-    "start:dev": "nodemon ./index.js",
+    "start:dev": "npm run build:ui && nodemon ./index.js",
     "build:ui": "npm install --prefix ui && npm run build --prefix ui",
     "serve": "concurrently \"npm run build:ui\" \"npm run start\"",
     "start:app": "npm run build:ui && npm run start"

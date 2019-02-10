@@ -1,6 +1,6 @@
-const PrankBase = require("./prank-base");
+const PrankExecutorBase = require("./prank-executor-base");
 const removeRoute = require('express-remove-route');
-class Route500ErrorSin extends PrankBase {
+class Route500ErrorSin extends PrankExecutorBase {
   constructor() {
     super(...arguments);
   }

@@ -1,6 +1,6 @@
-const PrankBase = require("./prank-base");
+const PrankExecutorBase = require("./prank-executor-base");
 
-class UnhandledRejection extends PrankBase {
+class UnhandledRejection extends PrankExecutorBase {
   constructor(expressApp) {
     super(...arguments);
     

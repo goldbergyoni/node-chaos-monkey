@@ -1,3 +1,11 @@
-//initialize all gates (triggers to start a chaos)
+const API = require('./entry-points/api');
+const ChaosControl = require('./chaos-control');
 
-require('./gates/webapp');
+module.exports.initialize = (expressApp) => {
+    return {
+        api: new API(expressApp),
+        chaosControl: new ChaosControl(expressApp)
+    };
+};
+
+//TODO: add command-line entry point as well

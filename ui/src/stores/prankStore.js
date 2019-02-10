@@ -4,7 +4,7 @@ import {action, observable, computed} from 'mobx';
 import axios from 'axios';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:8081');
+const socket = io('http://localhost:9090');
 
 class PrankStore {
   @observable
@@ -39,19 +39,18 @@ class PrankStore {
 
   @computed
   get latency() {
-    let latency = 0;
-    latency = Math.round(
-      Math.abs(
-        this.endTime - 1540000000000 - (this.startTime - 1540000000000)
-      ) / this.apiCalls
-    );
-    return latency;
+    console.log("fsdfd");
+    let result = 0;
+    const timeFromStart = (this.endTime - this.startTime)/1000;
+    console.log(`seconds from start`, timeFromStart, this.apiCalls); 
+    result = Math.round((timeFromStart)/this.apiCalls);
+    return 30;
   }
 
   @action.bound
   async getSinglePranksList() {
     try {
-      const res = await axios.get('http://localhost:8081/chaos/pranks-pool');
+      const res = await axios.get('http://localhost:8080/chaos/pranks/definition');
       this.singlePranks = res.data;
     } catch (e) {
       console.log('Error getting pranks list', e);
@@ -90,7 +89,7 @@ class PrankStore {
   @action.bound
   async addPrank(prank) {
     try {
-      await axios.post('http://localhost:8081/chaos/pranks-activity', prank);
+      await axios.post('http://localhost:8080/chaos/pranks/execute', prank);
       console.log('Prank Added Successfully');
     } catch (e) {
       console.log('Error Adding Prank', e);

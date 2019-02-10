@@ -1,6 +1,6 @@
 const EventEmitter = require("events");
 
-class PrankBase extends EventEmitter {
+class PrankExecutorBase extends EventEmitter {
   constructor(configuration, schedule, expressApp) {
     super();
     console.log(`Sin ${configuration.name} is now initialized with the the
@@ -21,4 +21,4 @@ class PrankBase extends EventEmitter {
   }
 }
 
-module.exports = PrankBase;
+module.exports = PrankExecutorBase;

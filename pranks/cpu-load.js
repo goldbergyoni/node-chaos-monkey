@@ -1,11 +1,11 @@
-const PrankBase = require("./prank-base");
+const PrankExecutorBase = require("./prank-executor-base");
 const sizeOf = require('object-sizeof');
 const fs = require('fs');
 const util = require('util');
 const readFilePromise = util.promisify(fs.readFile);
 const path = require('path');
 
-class OverloadCPU extends PrankBase {
+class OverloadCPU extends PrankExecutorBase {
   constructor(expressApp) {
     super(...arguments);
   }

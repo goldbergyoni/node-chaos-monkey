@@ -1,5 +1,5 @@
-const PrankBase = require("./prank-base");
-class ProcessExitSin extends PrankBase {
+const PrankExecutorBase = require("./prank-executor-base");
+class ProcessExitSin extends PrankExecutorBase {
   constructor(expressApp) {
     super(...arguments);
   }
