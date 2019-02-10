@@ -12,13 +12,22 @@
 
 ## Don't go to production without 10 minutes of chaos testing
 
-<h1 align="center">
-  <img src="docs/joke.jpg" alt="Bar on flames" />
-</h1>
+> "A software QA engineer walks into a bar
+> 
+>He orders a beer. Orders 0 beers. Orders 99999999999 beers. Orders a lizard. Orders -1 beers. Orders a ueicbksjdhd.
+>
+>First real customer walks in and asks where the bathroom is. The bar bursts into flames, killing everyone."
+>
+>Credit @brenankeller
 
-Functional bugs are just a subset of the bad things that happen in production. In reality, unplanned chaos will affect your application reliability - your process will crash, many exceptions will not get caught, some unknowns will slow your API, other unknowns will increase your error rate. To name a few. 
+Functional bugs are just a subset of the bad things that happen in production. In reality, unplanned chaos will affect your application reliability. How? your process will crash, many exceptions will not get caught, some unknowns will slow your API, other unknowns will increase your error rate. To name a few. 
 
-To deploy like a pro, spend as little as 10 minutes on Chaos Testing: simulate some bad things (e.g. event loop is blocked), approach your APIs to ensure they function correctly and ensure your monitoring systems became aware of the situation. We can provide the two first tasks for you seamlessly with a command-line or through our nit UI
+Deploy like a pro by spending as little as 10 minutes on Chaos Testing: 
+**1.** Simulate some bad things (e.g. event loop is blocked)
+**2.** Approach your APIs to ensure they function correctly 
+**3.** Ensure your monitoring systems became aware of the situation
+   
+**We can seamlessly perform the two first tasks for you using our nit UI or command line**
 
 
 ## 3 min start
