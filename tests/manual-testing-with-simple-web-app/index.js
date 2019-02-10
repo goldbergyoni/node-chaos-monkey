@@ -1,4 +1,4 @@
- const ChaosMonkey = require("../..");
+const ChaosMonkey = require("../..");
 const express = require("express");
 const app = express();
 

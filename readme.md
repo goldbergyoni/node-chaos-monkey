@@ -1,3 +1,5 @@
+# Extremely naughty Node.js chaos monkey
+
 <h1 align="center">
   <img src="docs/chaos-monkey.png" alt="Chaos Monkey" />
 </h1>
@@ -8,10 +10,18 @@
 
 <br/>
 
-# Extremly naughty chaos monkey to check your Node app resilliency
+## Don't go to production without 10 minutes of chaos testing
+
+<h1 align="center">
+  <img src="docs/joke.jpg" alt="Bar on flames" />
+</h1>
+
+Functional bugs are just a subset of the bad things that happen in production. In reality, unplanned chaos will affect your application reliability - your process will crash, many exceptions will not get caught, some unknowns will slow your API, other unknowns will increase your error rate. To name a few. 
+
+To deploy like a pro, spend as little as 10 minutes on Chaos Testing: simulate some bad things (e.g. event loop is blocked), approach your APIs to ensure they function correctly and ensure your monitoring systems became aware of the situation. We can provide the two first tasks for you seamlessly with a command-line or through our nit UI
 
 
-# 1 min start (limited functionality)
+## 3 min start
 ### Great for quick experiments, some pranks (damage) won't be available
 
 A. **Install:** `npm install node-chaos-monkey`
@@ -34,7 +44,7 @@ Require this package at the very beginning of your app, before registering other
 ```javascript
 const ChaosMonkey = require('chaos-monkey');
 //pass in a referrence to express app so the monkey can generate damage also within Express routes. This param is optional //but without it some pranks won't be available
-new ChaosMonkey(your-express-app).start();
+ChaosMonkey.initialize(your-express-app);
 ```
 
 C. **Trigger chaos using API or UI**: 
@@ -44,7 +54,7 @@ C. **Trigger chaos using API or UI**:
 
 
 
-# API and full documentation
+## API and full documentation
 ***1. Get list of available pranks***
 
 Method: GET
