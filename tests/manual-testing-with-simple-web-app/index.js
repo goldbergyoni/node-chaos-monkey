@@ -1,10 +1,13 @@
+//I wish I could drop this line
 const ChaosMonkey = require("../..");
+
 const express = require("express");
 const app = express();
 
 const port = process.env.PORT || 8080;
 app.listen(port);
 
+//I wish I could use also a command line -> chaos-monkey -f app.js --test-command='npm test' -r report.html
 ChaosMonkey.initialize(app);
 
 var router = express.Router();

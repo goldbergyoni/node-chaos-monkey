@@ -10,7 +10,7 @@
 
 <br/>
 
-## Don't go to production without 10 minutes of chaos testing
+## Don't go to production without 10 minutes of application-level chaos testing
 
 > "A software QA engineer walks into a bar
 > 
@@ -20,10 +20,10 @@
 >
 >Credit @brenankeller
 
-Functional bugs are just a subset of the bad things that happen in production. In reality, unplanned chaos will affect your application reliability. How? your process will crash, many exceptions will not get caught, some unknowns will slow your API, other unknowns will increase your error rate. To name a few. 
+Functional bugs are just a subset of the bad things that happen in production. In reality, unplanned chaos will affect your application reliability. How? your process will crash, the event loop might get blocked, many exceptions will not get caught, some unknowns will slow your API, other unknowns will increase your error rate. To name a few. **Unlike most chaos tools, our project is focused on application-level chaos and specifically bad things that happen in Node.js applications**.
 
 Deploy like a pro by spending as little as 10 minutes on Chaos Testing:
- 
+
 **1.** Simulate some bad things (e.g. event loop is blocked)
 
 **2.** Approach your APIs to ensure they function correctly 
@@ -31,6 +31,8 @@ Deploy like a pro by spending as little as 10 minutes on Chaos Testing:
 **3.** Ensure your monitoring systems became aware of the situation
    
 **We can seamlessly perform the two first tasks for you using our nit UI or command line**
+
+<img src="./docs/basic-flow.png">
 
 
 ## 3 min start
@@ -46,7 +48,7 @@ C. **Trigger chaos using API or UI**:
 
 This will trigger a random chaos, multiple pranks will get executed (e.g. memory overload, uncaught exceptions). Follow the log or the UI to see whatg happened and whether your app stayed resillience
 
-# 5 min start (full functionality)
+## 5 min start (full functionality)
 A. **Install:** `npm install node-chaos-monkey`
 
 B. **Add a reference in your code:** 
@@ -55,7 +57,7 @@ Require this package at the very beginning of your app, before registering other
 
 ```javascript
 const ChaosMonkey = require('chaos-monkey');
-//pass in a referrence to express app so the monkey can generate damage also within Express routes. This param is optional //but without it some pranks won't be available
+//pass in a reference to express app so the monkey can generate damage also within Express routes. This param is optional //but without it some pranks won't be available
 ChaosMonkey.initialize(your-express-app);
 ```
 
