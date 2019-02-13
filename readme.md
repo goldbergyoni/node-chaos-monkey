@@ -8,6 +8,8 @@
   <img src="https://img.shields.io/badge/⚙%20Build%20-%20Passing-blue.svg" alt="74 items"> <img src="https://img.shields.io/badge/%F0%9F%93%85%20Coverage%20-%2076-green.svg" alt="Last update: October 7th, 2018"> <img src="https://img.shields.io/badge/%E2%9C%94%20Pranks%20%20-%209%20Items-brightgreen.svg" alt="Updated for Node 8.11.3 LTS">
 </div>
 
+### **Caution: Alpha mode, we're now stabilizing the functionality and enhancing the docs. Consider contributing or visiting again soon**
+
 <br/>
 
 ## Don't go to production without 10 minutes of application-level chaos testing
@@ -24,7 +26,7 @@ Functional bugs are just a subset of the bad things that happen in production. I
 
 Deploy like a pro by spending as little as 10 minutes on Chaos Testing:
 
-**1.** Simulate some bad things (e.g. event loop is blocked)
+**1.** Simulate some bad things (e.g. event loop is blocked, error rate is inclining)
 
 **2.** Approach your APIs to ensure they function correctly 
 
