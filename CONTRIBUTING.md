@@ -31,6 +31,7 @@ Node.js backend, no DB, frontend with React, testing with Jest, Travis for CI, .
 - `Git clone https://github.com/i0natan/node-chaos-monkey`
 - `npm i`
 - `npm run test:manual`
+- Visit http://localhost:8080 and start creating some chaos
 
 Consider developing on a dedicated branch
 
