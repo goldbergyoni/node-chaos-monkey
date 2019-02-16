@@ -1,6 +1,7 @@
 /** @format */
 
 import React from 'react';
+import ReactTooltip from 'react-tooltip'
 
 import Header from './Header';
 import Menu from './Menu';
@@ -13,6 +14,9 @@ import Row from 'react-bootstrap/lib/Row';
 const Dashboard = ({children, name}) => {
   return (
     <Container fluid>
+      <ReactTooltip  id="commingSoon">
+          <span>Comming soon</span>
+      </ReactTooltip>/> 
       <Header />
       <Breadcrumbs name={name} />
       <Row>
