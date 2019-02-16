@@ -1,6 +1,6 @@
 {
   "name": "chaos-monkey",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -28,7 +28,7 @@
     "on-finished": "^2.3.0",
     "socket-io": "^1.0.0",
     "socket.io": "^2.1.1",
-    "underscore": "^1.9.1"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
