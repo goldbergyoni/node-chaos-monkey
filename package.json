@@ -35,5 +35,8 @@
   },
   "peerDependencies": {
     "express": "4.x"
+  },
+  "engines": {
+    "node": ">=8.15.0"
   }
 }
