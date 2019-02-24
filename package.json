@@ -10,7 +10,8 @@
     "start:dev": "npm run build:ui && nodemon ./index.js",
     "build:ui": "npm install --prefix ui && npm run build --prefix ui",
     "serve": "concurrently \"npm run build:ui\" \"npm run start\"",
-    "start:app": "npm run build:ui && npm run start"
+    "start:app": "npm run build:ui && npm run start",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
@@ -39,6 +40,10 @@
     "eslint-plugin-react": "^7.12.4",
     "nodemon": "^1.18.4"
   },
+  "eslintIgnore": [
+    "node_modules",
+    "build"
+  ],
   "peerDependencies": {
     "express": "4.x"
   },
