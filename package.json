@@ -10,7 +10,8 @@
     "start:dev": "npm run build:ui && nodemon ./index.js",
     "build:ui": "npm install --prefix ui && npm run build --prefix ui",
     "serve": "concurrently \"npm run build:ui\" \"npm run start\"",
-    "start:app": "npm run build:ui && npm run start"
+    "start:app": "npm run build:ui && npm run start",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
@@ -31,8 +32,20 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-security": "^1.4.0",
     "nodemon": "^1.18.4"
   },
+  "eslintIgnore": [
+    "node_modules",
+    "build"
+  ],
   "peerDependencies": {
     "express": "4.x"
   },
