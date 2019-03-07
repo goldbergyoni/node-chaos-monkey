@@ -9,7 +9,7 @@ class OverloadCPU extends PrankExecutorBase {
   constructor(expressApp) {
     super(...arguments);
   }
-
+  
   async start() {
     console.log(`Prank:About to overload CPU`)
     const fileContent = await readFilePromise(path.join(__dirname, './big-text-file.txt'));
