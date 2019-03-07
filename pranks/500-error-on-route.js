@@ -4,7 +4,7 @@ class Route500ErrorSin extends PrankExecutorBase {
   constructor() {
     super(...arguments);
   }
-
+  
   start() {
     this.active = true;
     this.context.configuration.properties.urls.forEach(url => {
