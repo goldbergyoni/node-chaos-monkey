@@ -31,6 +31,7 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0",
     "nodemon": "^1.18.4"
   },
   "peerDependencies": {
@@ -38,5 +39,10 @@
   },
   "engines": {
     "node": ">=8.15.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
