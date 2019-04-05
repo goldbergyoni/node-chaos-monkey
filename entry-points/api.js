@@ -82,7 +82,7 @@ class API {
         if (prankToEmit.name === "blocked-event-loop" || prankToEmit.name === "memory-load" || prankToEmit.name === "uncaught-exception" || prankToEmit.name === "cpu-load") {
           socket.broadcast.emit('new-prank-activity', prankToEmit);
         }
-      }, 1000);
+      }, 2000);
 
 
       socket.on('disconnect', function () {

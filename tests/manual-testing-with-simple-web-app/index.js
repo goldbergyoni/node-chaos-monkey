@@ -8,6 +8,7 @@ const port = process.env.PORT || 8080;
 app.listen(port);
 
 //I wish I could use also a command line -> chaos-monkey -f app.js --test-command='npm test' -r report.html
+console.log("Demo web app is now starting")
 ChaosMonkey.initialize(app);
 
 var router = express.Router();
@@ -22,15 +23,5 @@ router.get("/api/products", (req, res) => {
   res.status(200).json({});
 });
 
-
-process.on("uncaughtException", error => {
-  console.log(`Uncaught error is now handled error`);
-  console.log(error);
-});
-
-process.on("unhandledRejection", (reason, p) => {
-  console.log(`Uncaught promise is now handled error`);
-  console.log(p);
-});
 
 app.use(router);
