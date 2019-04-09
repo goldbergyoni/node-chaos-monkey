@@ -19,11 +19,13 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "lint": "eslint ."
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
+  "eslintIgnore": [
+    "node_modules",
+    "build"
+  ],
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -33,6 +35,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.1.2",
     "customize-cra": "^0.1.1",
+    "eslint-config-react-app": "^3.0.7",
     "react-app-rewired": "^1.6.2"
   }
 }

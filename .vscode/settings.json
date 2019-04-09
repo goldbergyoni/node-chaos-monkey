@@ -1,4 +1,14 @@
 {
-    "editor.fontSize": 16,
-    "terminal.integrated.fontSize": 16
+  "editor.fontSize": 16,
+  "terminal.integrated.fontSize": 16,
+  "eslint.enable": true,
+  "eslint.options": {
+    "configFile": ".eslintrc.js"
+  },
+  "editor.formatOnSave": true,
+  "prettier.trailingComma": "none",
+  "prettier.eslintIntegration": true,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.printWidth": 120
 }
