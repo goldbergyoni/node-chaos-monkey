@@ -94,7 +94,7 @@ class DefineApi extends Component {
               ref="fileUploader"
               style={{display: 'none'}}
             />
-            <Button variant="outline-success" onClick={this.handleFile}>
+            <Button variant="outline-success" onClick={this.handleFile} data-tip data-for="commingSoon">
               Import Swagger
             </Button>
           </Col>
