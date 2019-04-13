@@ -1,5 +1,5 @@
 {
-  "editor.fontSize": 16,
+  "editor.fontSize": 13,
   "terminal.integrated.fontSize": 16,
   "eslint.enable": true,
   "eslint.options": {

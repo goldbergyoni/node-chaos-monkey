@@ -36,7 +36,6 @@ class DefineApi extends Component {
   };
 
   handleJSONChange = e => {
-    console.log(e);
     this.setState({body: e.json});
   };
 
@@ -56,6 +55,7 @@ class DefineApi extends Component {
                 value={this.state.method}
                 // title={this.state.method}
                 id="input-group-dropdown-1"
+                className="method-select"
                 onChange={this.handleChange('method')}
               >
                 <Dropdown.Item as="option" value="GET">
