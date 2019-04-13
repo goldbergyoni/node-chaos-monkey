@@ -16,6 +16,10 @@ class PrankStore {
   @observable
   URL = '';
   @observable
+  method = '';
+  @observable
+  body = null;
+  @observable
   apiCalls = 0;
   @observable
   apiErrors = 0;
@@ -39,18 +43,20 @@ class PrankStore {
 
   @computed
   get latency() {
-    console.log("fsdfd");
+    console.log('fsdfd');
     let result = 0;
-    const timeFromStart = (this.endTime - this.startTime)/1000;
-    console.log(`seconds from start`, timeFromStart, this.apiCalls); 
-    result = Math.round((timeFromStart)/this.apiCalls);
+    const timeFromStart = (this.endTime - this.startTime) / 1000;
+    console.log(`seconds from start`, timeFromStart, this.apiCalls);
+    result = Math.round(timeFromStart / this.apiCalls);
     return 30;
   }
 
   @action.bound
   async getSinglePranksList() {
     try {
-      const res = await axios.get('http://localhost:8080/chaos/pranks/definition');
+      const res = await axios.get(
+        'http://localhost:8080/chaos/pranks/definition'
+      );
       this.singlePranks = res.data;
     } catch (e) {
       console.log('Error getting pranks list', e);
@@ -97,11 +103,10 @@ class PrankStore {
   }
 
   @action.bound
-  callApi() {
+  callApi(method, body) {
     this.startTime = this.startTime + new Date().getTime();
     console.log('START TIME:', this.startTime);
-    axios
-      .get(this.URL)
+    axios[method](this.URL, method === 'POST' || method === 'PUT' ? body : null)
       .then(() => {
         this.endTime = this.endTime + new Date().getTime();
         this.prankRunning = true;
@@ -123,9 +128,11 @@ class PrankStore {
   }
 
   @action.bound
-  setURL(newURL) {
+  setURL(newURL, method, body) {
     this.URL = newURL;
-    console.log('NEW URL', newURL);
+    this.method = method;
+    this.body = body;
+    console.log('NEW URL', newURL, method, body);
   }
 }
 

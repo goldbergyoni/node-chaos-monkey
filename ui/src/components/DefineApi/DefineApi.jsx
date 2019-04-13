@@ -2,6 +2,8 @@
 
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
+import JSONInput from 'react-json-editor-ajrm';
+import locale from 'react-json-editor-ajrm/locale/en';
 
 // Styles
 import Col from 'react-bootstrap/lib/Col';
@@ -18,17 +20,24 @@ class DefineApi extends Component {
   state = {
     URL: '',
     setURL: '',
+    method: 'GET',
+    body: null,
+    JSONFile: {BODY: 'JSON'},
   };
 
   setURL = e => {
     e.preventDefault();
-    this.props.store.setURL(this.state.URL);
+    this.props.store.setURL(this.state.URL, this.state.method, this.state.body);
     this.setState({setURL: this.state.URL});
   };
 
-  handleChange = event => {
-    this.setState({URL: event.target.value});
-    console.log(event.target.value);
+  handleChange = name => event => {
+    this.setState({[name]: event.target.value});
+  };
+
+  handleJSONChange = e => {
+    console.log(e);
+    this.setState({body: e.json});
   };
 
   handleFile = e => {
@@ -40,21 +49,29 @@ class DefineApi extends Component {
       <Col lg="10" md="9">
         <Row>
           <Col md="8">
-            <InputGroup className="mb-5">
-              <DropdownButton
-                as={InputGroup.Prepend}
+            <InputGroup className="mb-4">
+              <Dropdown
+                as="select"
                 variant="outline-secondary"
-                title="GET"
+                value={this.state.method}
+                // title={this.state.method}
                 id="input-group-dropdown-1"
+                onChange={this.handleChange('method')}
               >
-                <Dropdown.Item>GET</Dropdown.Item>
-                <Dropdown.Item disabled>POST</Dropdown.Item>
-                <Dropdown.Item disabled>PUT</Dropdown.Item>
-              </DropdownButton>
+                <Dropdown.Item as="option" value="GET">
+                  GET
+                </Dropdown.Item>
+                <Dropdown.Item as="option" value="POST">
+                  POST
+                </Dropdown.Item>
+                <Dropdown.Item as="option" value="PUT">
+                  PUT
+                </Dropdown.Item>
+              </Dropdown>
               <FormControl
                 aria-describedby="basic-addon1"
                 placeholder="http://api.example.com"
-                onChange={this.handleChange}
+                onChange={this.handleChange('URL')}
               />
             </InputGroup>
           </Col>
@@ -77,12 +94,31 @@ class DefineApi extends Component {
         <Row>
           <Col md="8">
             <InputGroup className="mb-4">
-              <FormControl
+              {/* <FormControl
                 as="textarea"
                 rows="8"
                 aria-describedby="basic-addon1"
                 placeholder="BODY - JSON"
-              />
+                value={this.state.body}
+                onChange={this.handleChange('body')}
+              /> */}
+              {this.state.method !== 'GET' && (
+                <div className="JSON-container">
+                  <JSONInput
+                    placeholder={this.state.JSONFile}
+                    locale={locale}
+                    theme="light_mitsuketa_tribute"
+                    width="100%"
+                    height="300px"
+                    onChange={this.handleJSONChange}
+                    style={{
+                      outerBox: {borderRadius: '0.25rem'},
+                      container: {borderRadius: '0.25rem'},
+                      body: {fontSize: '14px'},
+                    }}
+                  />
+                </div>
+              )}
             </InputGroup>
           </Col>
         </Row>
@@ -94,7 +130,12 @@ class DefineApi extends Component {
               ref="fileUploader"
               style={{display: 'none'}}
             />
-            <Button variant="outline-success" onClick={this.handleFile} data-tip data-for="commingSoon">
+            <Button
+              variant="outline-success"
+              onClick={this.handleFile}
+              data-tip
+              data-for="commingSoon"
+            >
               Import Swagger
             </Button>
           </Col>

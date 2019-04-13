@@ -2,13 +2,13 @@
 
 import React from 'react';
 import {Router, Switch, Route, Redirect} from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
+import {createBrowserHistory} from 'history';
 
 import ChaosTest from '../components/ChaosTest/ChaosTest';
 import DefineApi from '../components/DefineApi/DefineApi';
 import RouteContainer from './RouteContainer';
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 const AppRouter = props => (
   <Router history={history}>
