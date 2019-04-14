@@ -102,6 +102,9 @@ class DefineApi extends Component {
                 value={this.state.body}
                 onChange={this.handleChange('body')}
               /> */}
+              {this.state.method === 'get' && (
+                <div className="non-JSON-container" />
+              )}
               {this.state.method !== 'get' && (
                 <div className="JSON-container">
                   <JSONInput
