@@ -4,8 +4,8 @@ class Route500ErrorSin extends PrankExecutorBase {
   constructor() {
     super(...arguments);
   }
-
-  start() {
+ 
+  start() { 
     this.active = true;
     this.context.configuration.properties.urls.forEach(url => {
       console.log(`500 error route is about to register the url ${url}`);

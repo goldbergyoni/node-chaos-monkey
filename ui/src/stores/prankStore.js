@@ -63,6 +63,7 @@ class PrankStore {
     console.log('Socket Connected');
     socket.on('new-prank-activity', data => {
       if (data) {
+        console.log(`Just got a new prank ${data}`)
         this.pranksLog.push(data);
       } else {
         console.log(`a NULL prank just ran ${JSON.stringify(data)}`);
