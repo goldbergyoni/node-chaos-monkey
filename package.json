@@ -21,6 +21,9 @@
     "url": "https://github.com/i0natan/node-chaos-monkey"
   },
   "dependencies": {
+    "@types/on-finished": "^2.3.1",
+    "@types/socket.io": "^2.1.2",
+    "@types/underscore": "^1.8.14",
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
     "cors": "^2.8.4",
