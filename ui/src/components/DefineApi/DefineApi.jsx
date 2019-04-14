@@ -20,7 +20,7 @@ class DefineApi extends Component {
   state = {
     URL: '',
     setURL: '',
-    method: 'GET',
+    method: 'get',
     body: null,
     JSONFile: {BODY: 'JSON'},
   };
@@ -58,13 +58,13 @@ class DefineApi extends Component {
                 className="method-select"
                 onChange={this.handleChange('method')}
               >
-                <Dropdown.Item as="option" value="GET">
+                <Dropdown.Item as="option" value="get">
                   GET
                 </Dropdown.Item>
-                <Dropdown.Item as="option" value="POST">
+                <Dropdown.Item as="option" value="post">
                   POST
                 </Dropdown.Item>
-                <Dropdown.Item as="option" value="PUT">
+                <Dropdown.Item as="option" value="put">
                   PUT
                 </Dropdown.Item>
               </Dropdown>
@@ -102,7 +102,7 @@ class DefineApi extends Component {
                 value={this.state.body}
                 onChange={this.handleChange('body')}
               /> */}
-              {this.state.method !== 'GET' && (
+              {this.state.method !== 'get' && (
                 <div className="JSON-container">
                   <JSONInput
                     placeholder={this.state.JSONFile}

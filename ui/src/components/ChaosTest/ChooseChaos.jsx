@@ -42,9 +42,10 @@ class ChooseChaos extends Component {
 
   makeCall() {
     this.interval = setInterval(() => {
-      this.props.store.callApi('http://localhost:8081/chaos/pranks-pool');
+      this.props.store.callApi();
     }, 500);
   }
+  //'http://localhost:8081/chaos/pranks-pool'
 
   selectPrank = prank => {
     this.setState({selectedPrank: prank});

@@ -16,7 +16,7 @@ class PrankStore {
   @observable
   URL = '';
   @observable
-  method = '';
+  method = 'get';
   @observable
   body = null;
   @observable
@@ -103,10 +103,13 @@ class PrankStore {
   }
 
   @action.bound
-  callApi(method, body) {
+  callApi() {
     this.startTime = this.startTime + new Date().getTime();
     console.log('START TIME:', this.startTime);
-    axios[method](this.URL, method === 'POST' || method === 'PUT' ? body : null)
+    axios[this.method](
+      this.URL,
+      this.method === 'post' || this.method === 'put' ? this.body : null
+    )
       .then(() => {
         this.endTime = this.endTime + new Date().getTime();
         this.prankRunning = true;
