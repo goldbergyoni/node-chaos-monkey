@@ -1,1 +1,59 @@
-{"total":1,"searched":["3KPA24AB8JE078914"],"size":1000,"nextToken":null,"items":[{"asset":{"color":"BLACK   ","data":{"saleInfo":{"FLNDR":"L","color":"BLACK","groupCode":"HYMF","primeCode":"I","saleLane":0,"saleNumber":0,"saleRun":0,"saleYear":0,"sellerNumber":4905943,"workOrder":"1798013"},"vinData":{"make":"KIA       ","model":"RIO            ","vin":"3KPA24AB8JE078914","year":"2018"}},"id":"3KPA24AB8JE078914","siteId":"wpba","status":1,"trackerId":"58A0CB000040575E","updated":1553790321826,"vin":"3KPA24AB8JE078914"},"tracker":{"assetId":"3KPA24AB8JE078914","blueprintId":"7xVtTZ2ycUhqrOYeEGtcfz","deviceId":"05a60R3ipMlFDxRmoAHFtP","enhData":{"status":{"deadBattery":false,"defectiveGPS":false,"defectiveGps":false,"inMotion":false,"indoors":false,"lost":false,"lowBattery":false,"lowNoFix":true,"lowNoGpsFix":false,"notCommunicating":false,"obdNotConnected":false,"onLotNoFix":false,"unassociatedOnLot":false,"vehicleBatteryFailed":false}},"id":"58A0CB000040575E","siteId":"wpba","status":1,"systemId":"5kXUaswq8I8UwYmzcO9PVS","updated":1553790321826,"created":1528235420136,"data":{"assocInfo":{"assocTimestamp":1553790321943,"disassocTimestamp":1553790215263},"battery":{"daysRemaining":784,"power":585,"voltage":3.375},"batteryState":"good","deveui":"58-A0-CB-00-00-40-57-5E","deviceType":"coxv2","enhData":{"status":{"deadBattery":false,"defectiveGPS":false,"defectiveGps":false,"inMotion":false,"indoors":false,"lost":false,"lowBattery":false,"lowNoFix":true,"lowNoGpsFix":false,"notCommunicating":false,"obdNotConnected":false,"onLotNoFix":false,"unassociatedOnLot":false,"vehicleBatteryFailed":false}},"firmware":{"crc":"9a52ecba"},"firmwareCrc":"9a52ecba","lot":{"as400Number":"100","id":"3f19c58937c2956bc9e713faf70328d5","name":"100"},"messageType":"position","motion":{"payload":{"body":"01","port":214},"timestamp":"2019-03-28 16:48:51"},"position":{"accuracy":2,"filtered":false,"lat":26.6880984,"lon":-80.1823049,"parked":true,"payload":{"body":"10D847E8B7263502","port":211},"timestamp":"2019-03-28 16:51:23"},"siteId":"wpba","status":{"asserted":false,"associated":false,"beaconOk":true,"error":"","gpsFailState":false,"gpsFix":true,"indoors":false,"lost":false,"payload":{"body":"0044874902002200","port":212},"stopped":true,"temperature":36},"timestamp":"2019-03-28 16:51:23","updateReason":"stop motion","uplinkId":70563084320140600}}}]}
+{
+  "name": "chaos-monkey",
+  "version": "0.7.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:manual": "npm run build:ui && nodemon ./tests/manual-testing-with-simple-web-app/index.js",
+    "start": "node ./index.js",
+    "start:dev": "npm run build:ui && nodemon ./index.js",
+    "build:ui": "npm install --prefix ui && npm run build --prefix ui",
+    "serve": "concurrently \"npm run build:ui\" \"npm run start\"",
+    "start:app": "npm run build:ui && npm run start",
+    "lint": "eslint ."
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/i0natan/node-chaos-monkey"
+  },
+  "dependencies": {
+    "@types/on-finished": "^2.3.1",
+    "@types/socket.io": "^2.1.2",
+    "@types/underscore": "^1.8.14",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-remove-route": "^1.0.0",
+    "object-sizeof": "^1.2.0",
+    "on-finished": "^2.3.0",
+    "socket-io": "^1.0.0",
+    "socket.io": "^2.1.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "@types/eslint": "^4.16.6",
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-security": "^1.4.0",
+    "nodemon": "^1.18.4"
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "build"
+  ],
+  "peerDependencies": {
+    "express": "4.x"
+  },
+  "engines": {
+    "node": ">=8.15.0"
+  }
+}
