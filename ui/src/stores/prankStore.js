@@ -58,9 +58,15 @@ class PrankStore {
         'http://localhost:8080/chaos/pranks/definition'
       );
       this.singlePranks = res.data;
+      console.log('Single Prank List', res.data);
     } catch (e) {
       console.log('Error getting pranks list', e);
     }
+  }
+
+  @action.bound
+  resetPranksLog() {
+    this.pranksLog = [];
   }
 
   @action.bound
@@ -69,7 +75,7 @@ class PrankStore {
     console.log('Socket Connected');
     socket.on('new-prank-activity', data => {
       if (data) {
-        console.log(`Just got a new prank ${data}`)
+        console.log(`Just got a new prank ${data}`);
         this.pranksLog.push(data);
       } else {
         console.log(`a NULL prank just ran ${JSON.stringify(data)}`);

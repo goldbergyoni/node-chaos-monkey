@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 
-import ChooseChaos from './ChooseChaos';;
+import ChooseChaos from './ChooseChaos';
 import PranksLogList from './PranksLogList';
 import ChaosMetrics from './ChaosMetrics';
 
@@ -26,6 +26,8 @@ class PranksLog extends Component {
       apiIsAlive,
       latency,
     } = this.props.store;
+    console.log('PranksLog', pranksLog);
+
     return (
       <Col lg="10" md="9">
         <Row>

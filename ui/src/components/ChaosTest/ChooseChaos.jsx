@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import Button from 'react-bootstrap/lib/Button';
 import Card from 'react-bootstrap/lib/Card';
+import Form from 'react-bootstrap/lib/Form';
 
 @inject('store')
 @observer
@@ -23,6 +24,9 @@ class ChooseChaos extends Component {
       {friendlyName: 'Error handling benchmark'},
       {friendlyName: 'Slow and comprehensive'},
     ],
+    howLong: 30000,
+    delay: 0,
+    properties: '',
   };
 
   componentDidMount() {
@@ -34,7 +38,23 @@ class ChooseChaos extends Component {
   }
 
   createPrankandStart = () => {
-    this.props.store.addPrank(this.state.selectedPrank);
+    this.props.store.addPrank({
+      ...this.state.selectedPrank,
+      properties: [
+        {
+          ...this.state.selectedPrank.properties,
+          value: this.state.properties
+            ? this.state.properties
+            : this.state.selectedPrank.properties.defaultValue,
+        },
+      ],
+      schedule: {
+        type: 'one-time-schedule',
+        fadeOutInMS: this.state.howLong,
+        delay: this.state.delay,
+      },
+    });
+    this.props.store.resetPranksLog();
     this.makeCall();
     this.props.store.getPranksLog();
     this.setState({prankRunning: true});
@@ -42,21 +62,14 @@ class ChooseChaos extends Component {
 
   makeCall() {
     this.interval = setInterval(() => {
-<<<<<<< HEAD
-      this.props.store.callApi();
-    }, 500);
-=======
       this.props.store.callApi('http://localhost:8081/chaos/pranks-pool');
     }, 2000);
->>>>>>> cf4457f7fd8d28277198fd050469ad82f1ad4761
   }
-  //'http://localhost:8081/chaos/pranks-pool'
 
-  selectPrank = prank => {
-    this.setState({selectedPrank: prank});
-    setTimeout(() => {
-      console.log('Selected Prank', this.state.selectedPrank.name);
-    }, 0);
+  selectPrank = selectedPrank => {
+    this.setState({selectedPrank, properties: ''}, () => {
+      console.log('Selected Prank', this.state.selectedPrank.friendlyName);
+    });
   };
 
   stopPrank = () => {
@@ -66,6 +79,10 @@ class ChooseChaos extends Component {
 
   selectPrankTEST = prank => {
     console.log(prank);
+  };
+
+  handleChange = name => event => {
+    this.setState({[name]: event.target.value});
   };
 
   render() {
@@ -82,7 +99,7 @@ class ChooseChaos extends Component {
                 <DropdownComponent
                   items={pranks}
                   title="Pranks Plan"
-                  onClick={prank => this.selectPrankTEST(prank)}
+                  onClick={this.selectPrankTEST}
                   selectedPrank={this.state.selectPrank}
                 />
                 <Row>
@@ -96,9 +113,49 @@ class ChooseChaos extends Component {
                 <DropdownComponent
                   items={singlePranks}
                   title="Single Prank"
-                  onClick={prank => this.selectPrank(prank)}
+                  onClick={this.selectPrank}
                   selectedPrank={selectedPrank}
                 />
+                <hr />
+                <Form.Row className="my-3">
+                  <Form.Group as={Col} controlId="formGroupDelay">
+                    <Form.Label>Delay (ms)</Form.Label>
+                    <Form.Control
+                      required
+                      type="number"
+                      value={this.state.delay}
+                      onChange={this.handleChange('delay')}
+                      placeholder="How many ms to wait before starting"
+                    />
+                  </Form.Group>
+                  <Form.Group as={Col} controlId="formGroupHowLong">
+                    <Form.Label>How Long (ms)</Form.Label>
+                    <Form.Control
+                      required
+                      type="number"
+                      value={this.state.howLong}
+                      onChange={this.handleChange('howLong')}
+                      placeholder="For how long this prank should run"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <hr />
+                {selectedPrank &&
+                  selectedPrank.properties.map(
+                    prank =>
+                      prank.name && (
+                        <Form.Group controlId={`formGroup${prank.name}`}>
+                          <Form.Label>{prank.name}</Form.Label>
+                          <Form.Control
+                            required
+                            type={prank.type}
+                            value={this.state.properties}
+                            onChange={this.handleChange('properties')}
+                            placeholder={prank.description}
+                          />
+                        </Form.Group>
+                      )
+                  )}
               </>
             )}
             <Row className="text-center">
