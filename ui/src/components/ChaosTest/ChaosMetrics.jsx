@@ -27,7 +27,7 @@ const PrankScore = ({apiCalls, apiErrors, apiIsAlive, latency}) => {
             Errors
             <h3>
               <Badge pill className="fixed_badge" variant="dark">
-                <span id="coo" data-error-container="true" className="soo">{apiErrors}</span>
+                <span id="metric" className="d-flex-column">{apiErrors}</span>
               </Badge>
             </h3>
           </div>
