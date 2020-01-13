@@ -48,7 +48,7 @@ C. **Trigger chaos using API or UI**:
 - Browse to `http/s://{host}/chaos` and trigger some chaos
 - Invoke the API `POST: http/s://{host}/chaos/random`
 
-This will trigger a random chaos, multiple pranks will get executed (e.g. memory overload, uncaught exceptions). Follow the log or the UI to see whatg happened and whether your app stayed resillience
+This will trigger a random chaos, multiple pranks will get executed (e.g. memory overload, uncaught exceptions). Follow the log or the UI to see what happened and whether your app stayed resilience
 
 ## 5 min start (full functionality)
 A. **Install:** `npm install node-chaos-monkey`
