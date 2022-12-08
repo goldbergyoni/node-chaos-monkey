@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/lib/Col';
 import Badge from 'react-bootstrap/lib/Badge';
 
 const PrankScore = ({apiCalls, apiErrors, apiIsAlive, latency}) => {
+  console.log(apiCalls);
   return (
     <Col xl={{span: 6, offset: 1}} lg="7" md="12" className="mb-5">
       <Card bg="light" className="chaos_metrics">
@@ -26,7 +27,7 @@ const PrankScore = ({apiCalls, apiErrors, apiIsAlive, latency}) => {
             Errors
             <h3>
               <Badge pill className="fixed_badge" variant="dark">
-                {apiErrors}
+                <span id="metric" className="d-flex-column">{apiErrors}</span>
               </Badge>
             </h3>
           </div>

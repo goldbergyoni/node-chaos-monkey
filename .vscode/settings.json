@@ -1,7 +1,7 @@
 {
   "editor.fontSize": 16,
   "terminal.integrated.fontSize": 16,
-  "eslint.enable": true,
+  "eslint.enable": false,
   "eslint.options": {
     "configFile": ".eslintrc.js"
   },

@@ -18,7 +18,8 @@ const DurationDropdown = observer(({items, title, onClick, selectedPrank}) => {
       <Col md="8">
         <DropdownButton
           variant="light"
-          id="dropdown-item-button"
+          id="dropdown-item-button" 
+          data-prank-select-button="true"
           title={selectedPrank ? selectedPrank.name : 'Select a prank'}
         >
           {items.map((item, idx) => (
