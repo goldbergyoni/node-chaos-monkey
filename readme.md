@@ -40,9 +40,9 @@ Deploy like a pro by spending as little as 10 minutes on Chaos Testing:
 ## 3 min start
 ### Great for quick experiments, some pranks (damage) won't be available
 
-A. **Install:** `npm install node-chaos-monkey`
+A. **Install:** `npm install chaos-monkey`
 
-B. **Add a flag to start command:** `node -r node-chaos-monkey {your start file.js}`
+B. **Add a flag to start command:** `node -r chaos-monkey {your start file.js}`
 
 C. **Trigger chaos using API or UI**: 
 - Browse to `http/s://{host}/chaos` and trigger some chaos
@@ -51,7 +51,7 @@ C. **Trigger chaos using API or UI**:
 This will trigger a random chaos, multiple pranks will get executed (e.g. memory overload, uncaught exceptions). Follow the log or the UI to see whatg happened and whether your app stayed resillience
 
 ## 5 min start (full functionality)
-A. **Install:** `npm install node-chaos-monkey`
+A. **Install:** `npm install chaos-monkey`
 
 B. **Add a reference in your code:** 
 
